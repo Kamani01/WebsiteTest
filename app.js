@@ -69,6 +69,9 @@
     townList.innerHTML = cfg.areas.map((t) => "<span>" + t + "</span>").join("");
   }
 
+  const marquee = document.querySelector("[data-marquee]");
+  if (marquee) marquee.innerHTML += marquee.innerHTML;
+
   const form = document.querySelector("[data-book-form]");
   if (form) {
     form.addEventListener("submit", (e) => {

@@ -13,7 +13,7 @@
   <meta property="og:image" content="https://kamani01.github.io/WebsiteTest/assets/hero.jpg">
   <meta property="og:url" content="https://kamani01.github.io/WebsiteTest/">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#171410">
+  <meta name="theme-color" content="#14110e">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,7 +26,6 @@
     "name": "JS Driving School",
     "url": "https://kamani01.github.io/WebsiteTest/",
     "image": "https://kamani01.github.io/WebsiteTest/assets/hero.jpg",
-    "description": "Independent driving school offering manual and automatic lessons in Featherstone, Staffordshire.",
     "telephone": "+447447432160",
     "address": {
       "@type": "PostalAddress",
@@ -34,20 +33,7 @@
       "addressRegion": "Staffordshire",
       "postalCode": "WV10",
       "addressCountry": "GB"
-    },
-    "areaServed": [
-      "Featherstone", "Wolverhampton", "Shareshill", "Essington", "Coven", "Cheslyn Hay"
-    ],
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 52.64135,
-      "longitude": -2.15316
-    },
-    "openingHours": "Mo 07:00-17:00",
-    "priceRange": "££",
-    "sameAs": [
-      "https://www.google.com/maps?cid=3301546470054976225"
-    ]
+    }
   }
   </script>
 </head>
@@ -60,7 +46,7 @@
     </a>
     <nav class="nav" data-nav>
       <a href="#lessons">Lessons</a>
-      <a href="#pricing">Prices</a>
+      <a href="#method">How we teach</a>
       <a href="#reviews">Reviews</a>
       <a href="#book">Book</a>
       <a class="nav-cta" href="tel:+447447432160">07447 432160</a>
@@ -71,63 +57,105 @@
   <main id="main">
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="stars" aria-hidden="true">★★★★★</span> 5.0 on Google · Featherstone</p>
-        <h1>Driving lessons with a <em>calm</em> local instructor.</h1>
-        <p class="lead">Manual or automatic in a dual-control Ford Fiesta. Pickup from home in Featherstone, Wolverhampton and the villages around.</p>
+        <div class="hero-top">
+          <span class="lplate" aria-hidden="true">L</span>
+          <span class="live">Taking pupils in WV10</span>
+        </div>
+        <h1>Pass in Featherstone. <em>Properly.</em></h1>
+        <p class="lead">Calm, dual-control lessons in a Ford Fiesta. Manual or automatic. Picked up from home, then taught on the roads you’ll meet at Cat &amp; Kittens Lane.</p>
         <div class="hero-actions">
           <a class="btn btn-gold" href="tel:+447447432160">Call 07447 432160</a>
-          <a class="btn btn-ghost" href="https://wa.me/447447432160" target="_blank" rel="noopener">WhatsApp</a>
-          <a class="btn" href="#book">Book a lesson</a>
+          <a class="btn btn-ghost" href="https://wa.me/447447432160">WhatsApp</a>
+          <a class="btn btn-ghost" href="#book">Request a slot →</a>
         </div>
         <div class="hero-facts">
-          <div><strong>From £36</strong><span>per hour, manual</span></div>
-          <div><strong>5.0</strong><span>rated on Google</span></div>
-          <div><strong>WV10</strong><span>home pickup area</span></div>
+          <div><strong>5.0</strong><span>Google rating</span></div>
+          <div><strong>£36</strong><span>from / hour manual</span></div>
+          <div><strong>7am</strong><span>weekday start</span></div>
         </div>
       </div>
       <div class="hero-visual">
         <img src="assets/hero.jpg" alt="JS Driving School bronze Ford Fiesta with L-plates and roof sign.">
+        <div class="photo-frame" aria-hidden="true"></div>
+        <div class="float-chip">Dual-control Fiesta</div>
+        <div class="float-card">
+          <strong>5.0</strong>
+          <p>★★★★★ on Google</p>
+        </div>
       </div>
     </section>
 
-    <section class="trust" aria-label="Why JS">
-      <div><strong>DVSA-approved</strong><span>Fully qualified ADI</span></div>
-      <div><strong>Dual controls</strong><span>Same car through to test day</span></div>
-      <div><strong>Local test routes</strong><span>Cat &amp; Kittens Lane prep</span></div>
-      <div><strong>Patient teaching</strong><span>Beginners and refreshers</span></div>
-    </section>
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track" data-marquee>
+        <span>Featherstone</span><span>Wolverhampton</span><span>Shareshill</span><span>Essington</span><span>Coven</span><span>Cheslyn Hay</span><span>Bushbury</span><span>Hilton</span><span>Brinsford</span><span>Cat &amp; Kittens Lane</span>
+      </div>
+    </div>
 
     <section class="section" id="lessons">
-      <div class="wrap">
-        <p class="kicker">Lessons</p>
-        <h2>Pick the car. We’ll handle the rest.</h2>
-        <div class="grid-3">
+      <div class="wrap" data-reveal>
+        <p class="kicker">The car &amp; the hours</p>
+        <h2>Not a franchise. One instructor. One <em>plan</em>.</h2>
+        <div class="bento">
+          <article class="bento-feature">
+            <img src="assets/car.jpg" alt="Front of the JS Driving School Ford Fiesta.">
+            <div class="shade"></div>
+            <div class="copy">
+              <p class="kicker">The JS car</p>
+              <h3>Bronze Fiesta. Roof sign on. Dual controls in.</h3>
+              <p>Same car from the first quiet street to test day.</p>
+            </div>
+          </article>
           <article class="card">
+            <span class="card-no">01</span>
             <p class="meta">Most learners</p>
             <h3>Manual</h3>
-            <p>Clutch, gears and the full DVSA syllabus, taught in the right order — not a loop of the same roundabout.</p>
+            <p>Clutch, gears and the full syllabus, taught in order. The licence that keeps the most cars open after you pass.</p>
             <p class="meta">From <span data-bind="price-manual">£36</span> / hour</p>
           </article>
           <article class="card">
+            <span class="card-no">02</span>
             <p class="meta">Smoother start</p>
             <h3>Automatic</h3>
-            <p>No clutch. More attention on mirrors, junctions and traffic. A strong choice if gears are holding you back.</p>
+            <p>No clutch. Attention stays on mirrors, junctions and traffic — useful if gears are the thing holding you back.</p>
             <p class="meta">From <span data-bind="price-auto">£38</span> / hour</p>
-          </article>
-          <article class="card">
-            <p class="meta">Faster plan</p>
-            <h3>Intensive</h3>
-            <p>A two-hour assessment, then a written plan. Useful if you already have a test date or can do several hours a week.</p>
-            <p class="meta">Quoted after <span data-bind="price-assess">£70</span></p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="pricing" style="padding-top:0">
-      <div class="wrap">
-        <p class="kicker">Prices</p>
-        <h2>Clear numbers. Confirmed when you book.</h2>
+    <section class="section section-dark" id="method">
+      <div class="wrap" data-reveal>
+        <p class="kicker">How a lesson actually runs</p>
+        <h2>Four beats. No mystery <em>hours</em>.</h2>
+        <div class="timeline">
+          <article class="t-step">
+            <b>01</b>
+            <h3>Where you are</h3>
+            <p>Licence, nerves, any previous hours. Then a first drive on quiet Featherstone streets.</p>
+          </article>
+          <article class="t-step">
+            <b>02</b>
+            <h3>A visible plan</h3>
+            <p>Each hour has a focus: roundabouts, bay parks, independent driving. You leave knowing the next target.</p>
+          </article>
+          <article class="t-step">
+            <b>03</b>
+            <h3>Test roads</h3>
+            <p>A449, M54 junction work, and the Cat &amp; Kittens Lane approach — not the same estate loop.</p>
+          </article>
+          <article class="t-step">
+            <b>04</b>
+            <h3>Mocks, then test</h3>
+            <p>Full mocks when you’re ready. Test-day hire in the same dual-control car.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="wrap" data-reveal>
+        <p class="kicker">Guide prices</p>
+        <h2>Clear numbers. Confirmed when you <em>book</em>.</h2>
         <div class="price-table">
           <article class="price featured">
             <p class="kicker" style="color:var(--gold-2)">Best value</p>
@@ -150,14 +178,13 @@
             </ul>
           </article>
         </div>
-        <p class="form-note" style="margin-top:1rem">Guide rates. Confirmed when you book. DVSA theory and practical fees are paid to the DVSA.</p>
       </div>
     </section>
 
     <section class="section" id="reviews" style="padding-top:0">
-      <div class="wrap">
-        <p class="kicker">Reviews</p>
-        <h2>Rated 5.0 on Google.</h2>
+      <div class="wrap" data-reveal>
+        <p class="kicker">Google</p>
+        <h2>Rated 5.0 — and the reviews stay on <em>Google</em>.</h2>
         <div class="google-band" style="margin-top:1.8rem">
           <article class="google-card">
             <div class="google-score">
@@ -167,9 +194,9 @@
                 <p class="form-note">JS Driving School, Featherstone</p>
               </div>
             </div>
-            <p style="color:var(--muted)">Reviews stay on Google so they stay genuine. Read them, then call or send a booking request.</p>
+            <p style="color:var(--muted)">We don’t invent quotes. Open the live listing, then call or send a booking request.</p>
             <p><a class="btn" href="https://www.google.com/maps?cid=3301546470054976225" target="_blank" rel="noopener">Open Google reviews</a></p>
-            <p>Pickup: Featherstone, Wolverhampton, Shareshill, Essington, Coven, Cheslyn Hay, Bushbury, Hilton.</p>
+            <div class="towns" data-towns></div>
           </article>
           <iframe class="map-frame" title="JS Driving School on Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?cid=3301546470054976225&output=embed"></iframe>
         </div>
@@ -177,51 +204,46 @@
     </section>
 
     <section class="section" id="book" style="padding-top:0">
-      <div class="wrap book-layout">
-        <div>
-          <p class="kicker">Book</p>
-          <h2>Tell us a postcode and a time.</h2>
-          <p style="margin-top:1rem;color:var(--muted);max-width:32rem">First lesson is usually two hours. We’ll confirm pickup and come back with a slot.</p>
-          <p style="margin-top:1.1rem"><a href="tel:+447447432160">07447 432160</a> · <a href="https://wa.me/447447432160" target="_blank" rel="noopener">WhatsApp</a></p>
-        </div>
-        <form class="book" data-book-form>
-          <div class="form-row">
-            <label>Name
-              <input name="name" type="text" autocomplete="name" required>
-            </label>
-            <label>Phone
-              <input name="phone" type="tel" autocomplete="tel" required>
-            </label>
+      <div class="wrap">
+        <div class="book-stage">
+          <div>
+            <p class="kicker">Book a first hour</p>
+            <h2>Tell us a postcode and a time.</h2>
+            <p style="margin-top:1rem;max-width:30rem;color:rgba(247,243,236,.8)">Usually two hours. We’ll confirm pickup across Featherstone and Wolverhampton, then send a slot.</p>
+            <p style="margin-top:1.2rem"><a href="tel:+447447432160">07447 432160</a> · <a href="https://wa.me/447447432160">WhatsApp</a></p>
           </div>
-          <div class="form-row">
-            <label>Postcode
-              <input name="postcode" type="text" autocomplete="postal-code" required placeholder="WV10">
-            </label>
-            <label>Transmission
-              <select name="transmission" required>
+          <form class="book" data-book-form>
+            <div class="form-row">
+              <label>Name <input name="name" type="text" autocomplete="name" required></label>
+              <label>Phone <input name="phone" type="tel" autocomplete="tel" required></label>
+            </div>
+            <div class="form-row">
+              <label>Postcode <input name="postcode" type="text" autocomplete="postal-code" required placeholder="WV10"></label>
+              <label>Transmission
+                <select name="transmission" required>
+                  <option value="">Choose</option>
+                  <option>Manual</option>
+                  <option>Automatic</option>
+                  <option>Not sure yet</option>
+                </select>
+              </label>
+            </div>
+            <label>Experience
+              <select name="experience" required>
                 <option value="">Choose</option>
-                <option>Manual</option>
-                <option>Automatic</option>
-                <option>Not sure yet</option>
+                <option>Complete beginner</option>
+                <option>Some lessons already</option>
+                <option>Failed a test, need a rebuild</option>
+                <option>Refresher / passed already</option>
               </select>
             </label>
-          </div>
-          <label>Experience
-            <select name="experience" required>
-              <option value="">Choose</option>
-              <option>Complete beginner</option>
-              <option>Some lessons already</option>
-              <option>Failed a test, need a rebuild</option>
-              <option>Refresher / passed already</option>
-            </select>
-          </label>
-          <label>Times that work
-            <input name="times" type="text" placeholder="e.g. after college, Saturday mornings">
-          </label>
-          <button class="btn btn-gold" type="submit">Send request</button>
-          <p class="success" tabindex="-1">Request ready — WhatsApp or your phone app will open with the details.</p>
-          <p class="form-note">Usually answered the same day.</p>
-        </form>
+            <label>Times that work
+              <input name="times" type="text" placeholder="After college, Saturday mornings…">
+            </label>
+            <button class="btn btn-gold" type="submit">Send request</button>
+            <p class="success" tabindex="-1">Request ready — WhatsApp will open with the details.</p>
+          </form>
+        </div>
       </div>
     </section>
   </main>
