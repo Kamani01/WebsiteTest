@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book a Driving Lesson in Featherstone | JS Driving School</title>
+  <meta name="description" content="Request a driving lesson with JS Driving School in Featherstone. Tell us your postcode, manual or automatic, and when you can start.">
+  <link rel="canonical" href="https://kamani01.github.io/WebsiteTest/book.html">
+  <meta property="og:title" content="Book a lesson — JS Driving School">
+  <meta property="og:image" content="https://kamani01.github.io/WebsiteTest/assets/hero.jpg">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="index.html">
+      <span class="mark" aria-hidden="true">JS</span>
+      <span class="brand-text">JS Driving School<small>Featherstone</small></span>
+    </a>
+    <nav class="nav" data-nav>
+      <a href="lessons.html">Lessons</a>
+      <a href="areas.html">Areas</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a class="nav-cta" href="book.html">Book a lesson</a>
+    </nav>
+    <button class="menu-btn" type="button" data-menu aria-label="Open menu" aria-expanded="false"><span></span></button>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="wrap book-layout">
+        <div>
+          <p class="kicker">Book</p>
+          <h1>Tell us when. We will find the hour.</h1>
+          <p style="margin-top:1rem;color:var(--muted);max-width:32rem">A first lesson is usually two hours. Include a postcode so we can confirm pickup.</p>
+          <p data-need-phone style="margin-top:1.2rem">Prefer to call? <a data-phone href="tel:"></a></p>
+        </div>
+        <form class="book" data-book-form>
+          <div class="form-row">
+            <label>Name
+              <input name="name" type="text" autocomplete="name" required>
+            </label>
+            <label>Phone
+              <input name="phone" type="tel" autocomplete="tel" required>
+            </label>
+          </div>
+          <div class="form-row">
+            <label>Postcode
+              <input name="postcode" type="text" autocomplete="postal-code" required placeholder="WF7">
+            </label>
+            <label>Transmission
+              <select name="transmission" required>
+                <option value="">Choose</option>
+                <option>Manual</option>
+                <option>Automatic</option>
+                <option>Not sure yet</option>
+              </select>
+            </label>
+          </div>
+          <label>Experience
+            <select name="experience" required>
+              <option value="">Choose</option>
+              <option>Complete beginner</option>
+              <option>Some lessons already</option>
+              <option>Failed a test, need a rebuild</option>
+              <option>Refresher / passed already</option>
+            </select>
+          </label>
+          <label>Times that work
+            <input name="times" type="text" placeholder="e.g. after college, Saturday mornings">
+          </label>
+          <label>Anything we should know
+            <textarea name="notes" rows="4" placeholder="Nerves, a test date, a preferred instructor gender…"></textarea>
+          </label>
+          <button class="btn" type="submit">Send request</button>
+          <p class="success" tabindex="-1">Request ready. If email or WhatsApp is set up we will open it now — otherwise the details are copied so you can send them on.</p>
+          <p class="form-note">We reply as soon as the diary allows, usually the same day.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="mark">JS</span>
+          <span class="brand-text">JS Driving School<small>Featherstone · WF7</small></span>
+        </a>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <p><a href="lessons.html">Lessons</a></p>
+        <p><a href="areas.html">Areas</a></p>
+        <p><a href="book.html">Book</a></p>
+        <p><a href="privacy.html">Privacy</a></p>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p data-need-phone><a data-phone href="tel:"></a></p>
+        <p>Monday–Saturday, 8am–8pm</p>
+      </div>
+    </div>
+    <div class="wrap legal">
+      <span>© <span data-year>2026</span> JS Driving School</span>
+      <span>DVSA-approved independent instructor</span>
+    </div>
+  </footer>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
