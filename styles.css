@@ -1,3 +1,9 @@
+@property --btn-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
 :root {
   --bg: #161a21;
   --bg-2: #1f242d;
@@ -88,30 +94,47 @@ h1, h2, h3, p { margin: 0; }
 .nav a:hover { color: var(--ink); }
 
 .btn, .nav-cta {
-  display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
-  text-decoration: none; border: 1px solid transparent; cursor: pointer;
+  --btn-angle: 0deg;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  text-decoration: none;
+  cursor: pointer;
   border-radius: var(--r-pill);
-  padding: 0.78rem 1.15rem;
-  font-size: 0.9rem; font-weight: 650;
-  background: var(--accent); color: #161a21;
-  box-shadow: 0 0 0 0 var(--accent-glow);
-  transition: transform 0.2s, box-shadow 0.2s, border-radius 0.25s, background 0.2s, color 0.2s;
+  padding: 0.82rem 1.28rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #161a21;
+  border: 1.5px solid transparent;
+  background:
+    linear-gradient(#adff2f, #adff2f) padding-box,
+    conic-gradient(from var(--btn-angle), #adff2f 0%, #f2f5f1 18%, #adff2f 38%, #6f9a18 62%, #adff2f 100%) border-box;
+  box-shadow: 0 0 0 1px rgba(173, 255, 47, 0.18), 0 0 22px var(--accent-glow);
+  animation: btn-spin 2.8s linear infinite;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-radius 0.28s ease, color 0.2s ease;
 }
-.nav-cta { padding: 0.5rem 0.9rem; }
+.nav-cta { padding: 0.5rem 0.95rem; font-size: 0.86rem; }
 .btn:hover, .nav-cta:hover {
   transform: translateY(-1px);
-  box-shadow: 0 0 28px var(--accent-glow);
-  border-radius: 1.1rem;
+  border-radius: 1.15rem;
+  box-shadow: 0 0 0 1px rgba(173, 255, 47, 0.4), 0 0 34px rgba(173, 255, 47, 0.5);
 }
+.btn:active, .nav-cta:active { transform: translateY(0) scale(0.98); }
 .btn-ghost {
-  background: transparent; color: var(--ink);
-  border-color: var(--bg-3);
+  color: var(--ink);
+  background:
+    linear-gradient(#161a21, #161a21) padding-box,
+    conic-gradient(from var(--btn-angle), transparent 42%, #adff2f 58%, #f2f5f1 68%, transparent 82%) border-box;
   box-shadow: none;
 }
 .btn-ghost:hover {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-dim);
-  background: transparent;
+  color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-dim);
+}
+@keyframes btn-spin {
+  to { --btn-angle: 360deg; }
 }
 
 .menu-btn {
@@ -307,5 +330,6 @@ input:focus, select:focus, textarea:focus {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .btn, .nav-cta { animation: none; }
   * { transition: none !important; }
 }
