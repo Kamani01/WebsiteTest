@@ -454,6 +454,41 @@ h2 em { font-style: italic; color: var(--brick); }
   align-items: start;
 }
 
+.google-band {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 1.2rem;
+  align-items: stretch;
+}
+.google-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.google-score {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+}
+.google-score strong {
+  font-family: var(--serif);
+  font-size: 4rem;
+  line-height: 0.9;
+  font-weight: 400;
+}
+.stars { color: var(--gold); letter-spacing: 0.12em; font-size: 1.15rem; }
+.map-frame {
+  border: 0;
+  border-radius: var(--radius);
+  width: 100%;
+  min-height: 22rem;
+  filter: grayscale(0.15) contrast(1.02);
+}
+
 .cta-band {
   display: grid;
   grid-template-columns: 1.3fr 0.7fr;
@@ -545,7 +580,7 @@ input:focus, select:focus, textarea:focus {
 @media (max-width: 900px) {
   .trust { grid-template-columns: 1fr 1fr; }
   .trust div:nth-child(2) { border-right: 0; }
-  .intro, .grid-3, .price-table, .cta-band, .footer-grid, .grid-2, .split, .book-layout {
+  .intro, .grid-3, .price-table, .cta-band, .footer-grid, .grid-2, .split, .book-layout, .google-band {
     grid-template-columns: 1fr;
   }
   .nav {

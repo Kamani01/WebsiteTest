@@ -1,6 +1,6 @@
 # JS Driving School
 
-Independent driving school site for Featherstone, West Yorkshire.
+Independent driving school site for Featherstone, Staffordshire.
 
 **Live preview:** [https://kamani01.github.io/WebsiteTest/](https://kamani01.github.io/WebsiteTest/)
 
@@ -22,10 +22,12 @@ Until phone or email is set, the booking form copies the request so it can be se
 
 A website alone is not enough for Google Maps. After the site is live:
 
-1. Create a [Google Business Profile](https://www.google.com/business/) for **JS Driving School**, Featherstone, WF7.
-2. Add the GitHub Pages URL now, then switch it to your domain later.
-3. Keep name, town and phone identical on the site and the profile.
-4. Ask passed pupils for Google reviews.
+The Google Business Profile is already live (5.0). Keep name, town and phone identical:
+
+- Phone: 07447 432160
+- Maps: https://www.google.com/maps?cid=3301546470054976225
+
+Add the GitHub Pages URL on the profile, then switch it to your domain later. Ask passed pupils for Google reviews.
 
 ## Point a domain later
 

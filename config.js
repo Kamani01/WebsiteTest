@@ -4,19 +4,21 @@
 window.JS_CONFIG = {
   name: "JS Driving School",
   town: "Featherstone",
-  region: "West Yorkshire",
-  postcode: "WF7",
+  region: "Staffordshire",
+  postcode: "WV10",
   country: "GB",
 
-  /* Add these when you have them — the site hides empty fields */
-  phone: "",
+  phone: "07447 432160",
   email: "",
-  whatsapp: "",
+  whatsapp: "447447432160",
 
-  hours: "Monday–Saturday, 8am–8pm",
+  hours: "Monday 7am–5pm (see Google for the latest hours)",
   pickup: "Home, college, or work within our coverage area.",
+  googleMaps: "https://www.google.com/maps?cid=3301546470054976225",
+  googleShare: "https://share.google/VTm03GBKf9V4KkFdx",
+  googleRating: "5.0",
 
-  /* Guide prices for Yorkshire 2026. Confirm on booking. */
+  /* Guide prices. Confirm on booking. */
   prices: {
     manualHour: 36,
     autoHour: 38,
@@ -27,13 +29,15 @@ window.JS_CONFIG = {
 
   areas: [
     "Featherstone",
-    "Purston Jaglin",
-    "Pontefract",
-    "Castleford",
-    "Ackworth",
-    "Streethouse",
-    "Normanton",
-    "Wakefield"
+    "Wolverhampton",
+    "Shareshill",
+    "Essington",
+    "Coven",
+    "Cheslyn Hay",
+    "Bushbury",
+    "Fallings Park",
+    "Hilton",
+    "Brinsford"
   ],
 
   siteUrl: "https://kamani01.github.io/WebsiteTest"
