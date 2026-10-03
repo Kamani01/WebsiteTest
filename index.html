@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Driving Lessons in Featherstone | JS Driving School</title>
   <meta name="description" content="Driving lessons in Featherstone and Wolverhampton from £36/hour. One-to-one tuition, dual-control car, manual or automatic, pickup from home. Rated 5.0 on Google." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -14,34 +13,31 @@
     <div class="wrap nav">
       <a class="brand" href="index.html"><span class="mark">JS</span><span>JS Driving School<small>FEATHERSTONE</small></span></a>
       <nav class="nav-links" id="nav">
-        <a href="lessons.html">Lessons</a>
-        <a href="index.html#prices">Prices</a>
-        <a href="areas.html">Areas</a>
-        <a href="index.html#faq">FAQs</a>
+        <a href="#lessons">Lessons</a>
+        <a href="#prices">Prices</a>
+        <a href="#areas">Areas</a>
+        <a href="#faqs">FAQs</a>
         <a href="blog.html">Blog</a>
-        <a href="book.html">Book</a>
+        <a href="#book">Book</a>
       </nav>
       <a class="btn btn-violet" href="tel:+447447432160">Call 07447 432160</a>
       <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
     </div>
   </header>
   <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <span class="eyebrow light">DVSA-approved · Featherstone WV10</span>
-        <h1>Driving lessons at the speed of a calm pass.</h1>
-        <p class="lead">One independent instructor. Dual-control car. Manual or automatic. Pickup from home, then the roads you’ll actually meet around Cat &amp; Kittens Lane.</p>
-        <div class="hero-actions">
-          <a class="btn btn-violet" href="#book">Check availability</a>
-          <a class="btn btn-ghost" href="tel:+447447432160">Call 07447 432160</a>
-        </div>
-        <div class="stats">
-          <div class="stat"><b>5.0</b><span>Google rating</span></div>
-          <div class="stat"><b>1:1</b><span>Never shared hours</span></div>
-          <div class="stat"><b>£36</b><span>from / hour manual</span></div>
-        </div>
+    <div class="wrap">
+      <span class="eyebrow">DVSA-approved · Featherstone WV10</span>
+      <h1>Driving lessons at the speed of a calm pass.</h1>
+      <p class="lead">One independent instructor. Dual-control car. Manual or automatic. Pickup from home, then the roads you'll actually meet around Cat &amp; Kittens Lane.</p>
+      <div class="hero-actions">
+        <a class="btn btn-violet" href="#book">Check availability</a>
+        <a class="btn btn-ghost" href="tel:+447447432160">Call 07447 432160</a>
       </div>
-      <div class="hero-visual" role="img" aria-label="Learner car on a quiet residential street"></div>
+      <div class="stats">
+        <div class="stat"><b>5.0</b><span>Google rating</span></div>
+        <div class="stat"><b>1:1</b><span>Never shared hours</span></div>
+        <div class="stat"><b>£36</b><span>From / hour manual</span></div>
+      </div>
     </div>
   </section>
   <section class="section">
@@ -49,25 +45,26 @@
       <span class="eyebrow">Why JS</span>
       <h2>One instructor for every hour that has to land.</h2>
       <p class="sub">Not a franchise board. Same instructor, same dual-control car, a visible plan for the next lesson.</p>
-      <div class="feature-row">
-        <article class="card"><div class="ico">01</div><h3>Patient tuition</h3><p>Beginners, refreshers and rebuilds after a fail. You set the pace.</p></article>
-        <article class="card"><div class="ico">02</div><h3>Local routes</h3><p>Featherstone, Wolverhampton and Cat &amp; Kittens Lane, not a random estate loop.</p></article>
-        <article class="card"><div class="ico">03</div><h3>Clear next step</h3><p>Each hour has a focus. You leave knowing what the next one is for.</p></article>
-        <article class="card"><div class="ico">04</div><h3>Dual controls</h3><p>We sit quietly while you work, and step in the moment something tightens up.</p></article>
+      <div class="grid4">
+        <article class="card"><h3>Patient tuition</h3><p>Beginners, refreshers and rebuilds after a fail. You set the pace.</p></article>
+        <article class="card"><h3>Local routes</h3><p>Featherstone, Wolverhampton and Cat &amp; Kittens Lane, not a random estate loop.</p></article>
+        <article class="card"><h3>Clear next step</h3><p>Each hour has a focus. You leave knowing what the next one is for.</p></article>
+        <article class="card"><h3>Dual controls</h3><p>We sit quietly while you work, and step in the moment something tightens up.</p></article>
       </div>
     </div>
   </section>
-  <section class="section" id="lessons" style="background:var(--panel)">
+  <section class="section black" id="lessons">
     <div class="wrap">
       <span class="eyebrow">Lessons</span>
       <h2>Manual, automatic, intensive. One calm approach.</h2>
       <p class="sub">Bring your provisional licence and wear shoes you can feel the pedals in. Manual lessons cover clutch, gears and hill starts. Automatic keeps attention on mirrors, junctions and traffic.</p>
-      <div class="lessons">
+      <div class="grid4">
         <article class="lesson"><div class="tag">M</div><h3>Manual</h3><p>Clutch, gears, hill starts and test-ready control.</p><ul><li>Full DVSA syllabus</li><li>Real traffic</li><li>Test-focused routes</li></ul><div class="price">From £36 / hour</div></article>
         <article class="lesson"><div class="tag">A</div><h3>Automatic</h3><p>No clutch. Attention stays on mirrors, junctions and traffic.</p><ul><li>Calmer first hours</li><li>If gears are the blocker</li><li>Flexible diary</li></ul><div class="price">From £38 / hour</div></article>
         <article class="lesson"><div class="tag">I</div><h3>Intensive</h3><p>A compressed plan after a two-hour assessment.</p><ul><li>Written hour-by-hour plan</li><li>Same instructor throughout</li><li>Useful with a test date booked</li></ul><div class="price">Quoted after £70</div></article>
         <article class="lesson"><div class="tag">R</div><h3>Refresher &amp; mocks</h3><p>Gap in driving, nerves, or test-day car hire.</p><ul><li>Confidence rebuilds</li><li>Full mock tests</li><li>Same dual-control car on the day</li></ul><div class="price">Quoted to the brief</div></article>
       </div>
+      <p style="margin-top:22px"><a class="btn btn-violet" href="#book">Book a first lesson</a></p>
     </div>
   </section>
   <section class="section" id="prices">
@@ -75,42 +72,35 @@
       <span class="eyebrow">Prices</span>
       <h2>Clear numbers. Simple next step.</h2>
       <p class="sub">Guide rates for Featherstone. DVSA test fees are paid to the DVSA, not to us. Two-hour slots preferred.</p>
-      <div class="pricing">
-        <article class="plan"><h3>Manual</h3><div class="amount">£36 <span>/ hour</span></div><p>Clutch, gears and test-ready control.</p><ul><li>Two-hour slots preferred</li><li>10-hour block £340</li><li>Pickup from home</li></ul><a class="btn btn-line" href="#book">Get started</a></article>
+      <div class="plans">
+        <article class="plan"><h3>Manual</h3><div class="amount">£36 <span>/ hour</span></div><p>Clutch, gears and test-ready control.</p><ul><li>Two-hour slots preferred</li><li>10-hour block £340</li><li>Pickup from home</li></ul><a class="btn btn-violet" href="#book">Get started</a></article>
         <article class="plan featured"><h3>10-hour block</h3><div class="amount">£340 <span>manual</span></div><p>Auto from £360. A run of hours with the same instructor.</p><ul><li>Everything in hourly manual</li><li>Visible plan across the block</li><li>Confirmed when you book</li></ul><a class="btn btn-violet" href="#book">Get started</a></article>
-        <article class="plan"><h3>Automatic</h3><div class="amount">£38 <span>/ hour</span></div><p>For drivers who will stay in an automatic, or if gears are the blocker.</p><ul><li>10 hours from £360</li><li>Confirmed when you book</li><li>Same local routes</li></ul><a class="btn btn-line" href="#book">Get started</a></article>
-        <article class="plan" style="background:var(--panel)"><h3>Custom plan</h3><div class="amount" style="font-size:28px">Let's plan it</div><p>Intensive after a £70 assessment. Refreshers, mocks and Pass Plus quoted to the brief.</p><a class="btn btn-dark" href="#book">Ask with your postcode</a></article>
+        <article class="plan"><h3>Automatic</h3><div class="amount">£38 <span>/ hour</span></div><p>For drivers who will stay in an automatic, or if gears are the blocker.</p><ul><li>10 hours from £360</li><li>Confirmed when you book</li><li>Same local routes</li></ul><a class="btn btn-violet" href="#book">Get started</a></article>
+        <article class="plan"><h3>Custom plan</h3><div class="amount" style="font-size:28px">Let's plan it</div><p>Intensive after a £70 assessment. Refreshers, mocks and Pass Plus quoted to the brief.</p><ul><li>Hour-by-hour written plan</li><li>Test-day car hire</li></ul><a class="btn btn-dark" href="#book">Ask with your postcode</a></article>
       </div>
     </div>
   </section>
-  <section class="section" id="areas" style="padding-top:0">
-    <div class="wrap proof">
-      <div>
-        <span class="eyebrow">Google</span>
-        <h2 style="font-size:40px">Rated 5.0</h2>
-        <div class="stars">★★★★★</div>
-        <p class="muted">Reviews stay on Google. We don't invent quotes.</p>
-        <p><a class="btn btn-dark" href="https://www.google.com/maps?cid=3301546470054976225">View on Google</a></p>
-      </div>
-      <div>
-        <span class="eyebrow">Coverage</span>
-        <h2 style="font-size:36px">Pickup in WV10 and nearby</h2>
-        <p class="sub">Featherstone first, then the surrounding villages and Wolverhampton. Test prep for Cat &amp; Kittens Lane, WV10 7JD.</p>
-        <div class="areas">
-          <span class="area-chip">Featherstone</span><span class="area-chip">Wolverhampton</span><span class="area-chip">Shareshill</span><span class="area-chip">Essington</span><span class="area-chip">Coven</span><span class="area-chip">Cheslyn Hay</span><span class="area-chip">Bushbury</span><span class="area-chip">Fallings Park</span><span class="area-chip">Hilton</span><span class="area-chip">Brinsford</span>
-        </div>
-      </div>
+  <section class="section gray">
+    <div class="wrap">
+      <span class="eyebrow">Google</span>
+      <h2>Rated 5.0</h2>
+      <div>★★★★★</div>
+      <p class="sub">Reviews stay on Google. We don't invent quotes.</p>
+      <p><a class="btn btn-dark" href="https://www.google.com/maps?cid=3301546470054976225">View on Google</a></p>
     </div>
   </section>
-  <section class="section" id="faq" style="padding-top:10px">
+  <section class="section black" id="areas">
+    <div class="wrap">
+      <span class="eyebrow">Coverage</span>
+      <h2>Pickup in WV10 and nearby</h2>
+      <p class="sub">Featherstone first, then the surrounding villages and Wolverhampton. Test prep for Cat &amp; Kittens Lane, WV10 7JD. Not sure about your postcode? Just ask.</p>
+      <div class="chips"><span>Featherstone</span><span>Wolverhampton</span><span>Shareshill</span><span>Essington</span><span>Coven</span><span>Cheslyn Hay</span><span>Bushbury</span><span>Fallings Park</span><span>Hilton</span><span>Brinsford</span></div>
+    </div>
+  </section>
+  <section class="section" id="faqs">
     <div class="wrap two">
+      <div><span class="eyebrow">FAQs</span><h2>Frequently asked questions</h2><p><a class="btn btn-violet" href="#book">Book a lesson</a></p></div>
       <div>
-        <span class="eyebrow">FAQs</span>
-        <h2>Frequently asked questions</h2>
-        <p class="sub">Sending a request does not confirm a lesson. We'll reply with a slot, usually the same day.</p>
-        <p><a class="btn btn-violet" href="#book">Book a lesson</a></p>
-      </div>
-      <div class="faq">
         <details open><summary>What is included in a lesson?</summary><p>One-to-one tuition in a dual-control car, planned around the DVSA syllabus. Pickup from home, college or work if your postcode is on the round.</p></details>
         <details><summary>How much are lessons?</summary><p>Manual from £36 an hour, or £340 for 10 hours. Automatic from £38, or £360 for 10 hours. Intensive is quoted after a £70 assessment. DVSA test fees are paid to the DVSA.</p></details>
         <details><summary>Do you cover my area?</summary><p>Featherstone first, then Wolverhampton, Shareshill, Essington, Coven, Cheslyn Hay, Bushbury, Fallings Park, Hilton and Brinsford. Ask with your postcode.</p></details>
@@ -119,95 +109,35 @@
       </div>
     </div>
   </section>
-  <section class="section" id="book" style="padding-top:0">
+  <section class="section" id="book">
     <div class="wrap book-layout">
       <div>
         <span class="eyebrow">Book</span>
         <h2>Check availability</h2>
         <p class="sub">Sending a request does not confirm a lesson. We'll reply with a slot, usually the same day. Prefer to talk? Call 07447 432160.</p>
         <form class="book" onsubmit="return sendHome(event)">
-          <div class="form-grid">
-            <div><label>NAME</label><input name="name" required /></div>
-            <div><label>PHONE</label><input name="phone" required /></div>
-          </div>
-          <div class="form-grid">
-            <div><label>EMAIL (OPTIONAL)</label><input name="email" type="email" /></div>
-            <div><label>PICKUP POSTCODE</label><input name="postcode" required /></div>
-          </div>
-          <div class="form-grid">
-            <div><label>LESSON TYPE</label>
-              <select name="lesson">
-                <option>Manual (from £36/hour)</option>
-                <option>Automatic (from £38/hour)</option>
-                <option>Intensive</option>
-                <option>Refresher or mock test</option>
-              </select>
-            </div>
-            <div><label>EXPERIENCE</label>
-              <select name="experience">
-                <option>Choose one</option>
-                <option>Complete beginner</option>
-                <option>Some lessons already</option>
-                <option>Test booked</option>
-                <option>Returning after a fail</option>
-                <option>Passed, want a refresher</option>
-              </select>
-            </div>
-          </div>
+          <div class="form-grid"><div><label>NAME</label><input name="name" required /></div><div><label>PHONE</label><input name="phone" required /></div></div>
+          <div class="form-grid"><div><label>EMAIL (OPTIONAL)</label><input name="email" type="email" /></div><div><label>PICKUP POSTCODE</label><input name="postcode" required /></div></div>
+          <div class="form-grid"><div><label>LESSON TYPE</label><select name="lesson"><option>Manual (from £36/hour)</option><option>Automatic (from £38/hour)</option><option>Intensive</option><option>Refresher or mock test</option></select></div><div><label>EXPERIENCE</label><select name="experience"><option>Choose one</option><option>Complete beginner</option><option>Some lessons already</option><option>Test booked</option><option>Returning after a fail</option><option>Passed, want a refresher</option></select></div></div>
           <div><label>PREFERRED DAYS AND TIMES</label><input name="times" /></div>
           <div><label>ANYTHING ELSE?</label><textarea name="notes" rows="3"></textarea></div>
           <button class="btn btn-violet" type="submit">Check availability</button>
         </form>
       </div>
-      <aside>
-        <article class="card">
-          <h3>Ready for your first lesson?</h3>
-          <p>Send your postcode and we will reply with a slot, usually the same day.</p>
-          <p style="margin-top:14px">07447 432160</p>
-          <p>Rated 5.0 on Google</p>
-        </article>
-      </aside>
+      <aside class="card"><h3>Ready for your first lesson?</h3><p>Send your postcode and we will reply with a slot, usually the same day.</p></aside>
     </div>
   </section>
   <script>
-    function sendHome(e) {
-      e.preventDefault();
-      const f = e.target;
-      const text = `Lesson request — JS Driving School\nName: ${f.name.value}\nPhone: ${f.phone.value}\nEmail: ${f.email.value}\nPostcode: ${f.postcode.value}\nLesson: ${f.lesson.value}\nExperience: ${f.experience.value}\nTimes: ${f.times.value}\nNotes: ${f.notes.value}`;
-      window.location.href = "https://wa.me/447447432160?text=" + encodeURIComponent(text);
-      return false;
-    }
+    function sendHome(e){e.preventDefault();const f=e.target;const text=`Lesson request \u2014 JS Driving School\nName: ${f.name.value}\nPhone: ${f.phone.value}\nEmail: ${f.email.value}\nPostcode: ${f.postcode.value}\nLesson: ${f.lesson.value}\nExperience: ${f.experience.value}\nTimes: ${f.times.value}\nNotes: ${f.notes.value}`;location.href='https://wa.me/447447432160?text='+encodeURIComponent(text);return false;}
   </script>
   <footer class="site">
     <div class="wrap foot">
-      <div>
-        <a class="brand" href="index.html"><span class="mark">JS</span><span>JS Driving School<small>FEATHERSTONE · WV10</small></span></a>
-        <p>One independent instructor, one dual-control car, and a clear plan for every hour.</p>
-        <p>Test centre practice: Cat &amp; Kittens Lane, Featherstone, WV10 7JD</p>
-      </div>
-      <div>
-        <h4>Pages</h4>
-        <a href="index.html">Home</a>
-        <a href="lessons.html">Lessons</a>
-        <a href="index.html#prices">Prices</a>
-        <a href="areas.html">Areas</a>
-        <a href="index.html#faq">FAQs</a>
-        <a href="blog.html">Blog</a>
-        <a href="book.html">Book a lesson</a>
-      </div>
-      <div>
-        <h4>Get in touch</h4>
-        <a href="tel:+447447432160">07447 432160</a>
-        <a href="https://www.google.com/maps?cid=3301546470054976225">Rated 5.0 on Google</a>
-        <p>Replies usually the same day.</p>
-      </div>
-      <div>
-        <h4>Legal</h4>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms &amp; Conditions</a>
-      </div>
+      <div><a class="brand" href="index.html"><span class="mark">JS</span><span>JS Driving School</span></a><p>One independent instructor, one dual-control car, and a clear plan for every hour.</p><p>Test centre practice: Cat &amp; Kittens Lane, Featherstone, WV10 7JD</p></div>
+      <div><h4>Pages</h4><a href="index.html">Home</a><a href="#lessons">Lessons</a><a href="#prices">Prices</a><a href="#areas">Areas</a><a href="#faqs">FAQs</a><a href="blog.html">Blog</a><a href="#book">Book a lesson</a></div>
+      <div><h4>Get in touch</h4><a href="tel:+447447432160">07447 432160</a><a href="https://www.google.com/maps?cid=3301546470054976225">Rated 5.0 on Google</a><p>Replies usually the same day.</p></div>
+      <div><h4>Legal</h4><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a></div>
     </div>
-    <div class="wrap legal"><span>© 2026 JS Driving School. Featherstone.</span><span>DVSA-approved independent instructor</span></div>
+    <div class="wrap legal"><span>© 2026 JS Driving School. Featherstone.</span></div>
   </footer>
 </body>
 </html>
