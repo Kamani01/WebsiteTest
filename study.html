@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Junction school | JS Driving School</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=6" />
+  <style>
+    .study-hero { padding:120px 0 40px; }
+    .tabs { display:flex; gap:8px; flex-wrap:wrap; margin:18px 0; }
+    .tabs button { border:1px solid #e4e4e7; background:#fff; border-radius:999px; padding:10px 14px; font-weight:600; cursor:pointer; }
+    .tabs button.on { background:#111; color:#fff; border-color:#111; }
+    .study-grid { display:grid; grid-template-columns:1.05fr .95fr; gap:22px; align-items:start; }
+    .stage { background:#111; border-radius:20px; min-height:320px; overflow:hidden; }
+    .stage svg { width:100%; height:340px; display:block; }
+    .car { offset-rotate:auto; animation:lap 12s linear infinite; }
+    .stage[data-step="1"] .car { animation-delay:0s; }
+    .stage[data-step="2"] .car { animation-delay:-2.2s; }
+    .stage[data-step="3"] .car { animation-delay:-4.4s; }
+    .stage[data-step="4"] .car { animation-delay:-6.6s; }
+    .stage[data-step="5"] .car { animation-delay:-8.8s; }
+    @keyframes lap { to { offset-distance:100%; } }
+    .steps { display:grid; gap:10px; }
+    .steps button { text-align:left; border:1px solid #ececef; background:#fff; border-radius:14px; padding:14px; cursor:pointer; }
+    .steps button.on { border-color:#6142ff; }
+    .steps b { display:block; }
+    .steps span { color:#6e6e6e; }
+    .routine { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:12px; }
+    .routine i { background:#f4f4f4; border-radius:999px; padding:8px 12px; font-style:normal; font-weight:650; }
+    @media (max-width:900px) { .study-grid { grid-template-columns:1fr; } .study-hero { padding-top:100px; } }
+  </style>
+</head>
+<body>
+  <header class="site">
+    <div class="wrap nav">
+      <a class="brand" href="index.html"><span class="mark">JS</span><span>JS Driving School<small>FEATHERSTONE</small></span></a>
+      <nav class="nav-links" id="nav">
+        <a href="index.html#lessons">Lessons</a>
+        <a href="index.html#prices">Prices</a>
+        <a href="study.html">Study</a>
+        <a href="index.html#book">Book</a>
+      </nav>
+      <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+    </div>
+  </header>
+  <main class="wrap study-hero">
+    <a href="index.html">Back to site</a>
+    <p class="eyebrow">Study</p>
+    <h1>Junction school</h1>
+    <p class="sub">Watch the car work through the two junctions that catch new drivers out. Follow the green line, read each step, and you'll walk into your first lesson already knowing what's coming.</p>
+    <div class="tabs">
+      <button class="on" id="tab-round" onclick="show('round')">Roundabout</button>
+      <button id="tab-cross" onclick="show('cross')">Controlled crossroads</button>
+    </div>
+    <div class="study-grid" id="round">
+      <div class="stage" id="round-stage" data-step="1">
+        <svg viewBox="0 0 360 360">
+          <rect width="360" height="360" fill="#111"/>
+          <circle cx="180" cy="180" r="78" fill="none" stroke="#2a2a2a" stroke-width="46"/>
+          <circle cx="180" cy="180" r="34" fill="#1c1c1c"/>
+          <path d="M180 40 H250 C310 40 320 70 320 180 C320 290 290 320 180 320 C70 320 40 290 40 180 C40 70 70 40 180 40" fill="none" stroke="#3dd68c" stroke-width="4"/>
+          <g class="car" style="offset-path:path('M180 40 H250 C310 40 320 70 320 180 C320 290 290 320 180 320 C70 320 40 290 40 180 C40 70 70 40 180 40')"><rect x="-16" y="-8" width="32" height="16" rx="4" fill="#6142ff"/></g>
+        </svg>
+      </div>
+      <div class="steps" id="round-steps"></div>
+    </div>
+    <div class="study-grid" id="cross" hidden>
+      <div class="stage" id="cross-stage" data-step="1">
+        <svg viewBox="0 0 360 360">
+          <rect width="360" height="360" fill="#111"/>
+          <rect x="145" y="0" width="70" height="360" fill="#1a1a1a"/>
+          <rect x="0" y="145" width="360" height="70" fill="#1a1a1a"/>
+          <path d="M180 330 V210 H250 V150 H180 V30" fill="none" stroke="#3dd68c" stroke-width="4"/>
+          <g class="car" style="offset-path:path('M180 330 V210 H250 V150 H180 V30');animation-duration:10s"><rect x="-16" y="-8" width="32" height="16" rx="4" fill="#6142ff"/></g>
+          <circle cx="128" cy="128" r="6" fill="#e23b3b"/>
+        </svg>
+      </div>
+      <div class="steps" id="cross-steps"></div>
+    </div>
+    <p class="sub" style="margin-top:14px">Tap a step to jump the animation there. The loop replays automatically.</p>
+    <h2>The routine behind every junction</h2>
+    <p class="sub">Every junction, roundabout or crossroads, is the same five-step routine.</p>
+    <div class="routine"><i>Mirrors</i><span>→</span><i>Signal</i><span>→</span><i>Position</i><span>→</span><i>Speed</i><span>→</span><i>Look</i></div>
+    <p style="margin-top:22px"><a class="btn btn-violet" href="index.html#book">Book a lesson</a></p>
+  </main>
+  <script>
+    const round = [["Approach","Ease off the gas early, check your mirrors and pick the correct lane. Left lane for the first exit, right lane if you're turning right."],["Give way","Stop at the line and look right. Traffic already on the roundabout has priority. Wait for a safe gap before you join."],["Enter","Turn left into the gap and keep your speed low while you join the flow."],["Circulate","Keep left around the island and hold your lane. Signal left just after you pass the exit before yours."],["Exit","Leave at your exit, cancel the signal and check your mirrors as you build speed away."]];
+    const cross = [["Approach","Mirrors, signal, position. Line up early for the turn you plan to make and control your speed on the way in."],["Observe","Scan the whole junction: the lights, oncoming traffic, pedestrians and anyone crossing."],["Stop at red","A red light means stop behind the line. Cross traffic has the green. That's what controlled means: everyone takes their turn."],["Green, go","On green, check it's clear and move off. Turning right? Give way to oncoming traffic before you cross their path."],["Complete","Cancel your signal, check your mirrors and build speed smoothly away from the junction."]];
+    function render(id, items, stage) { document.getElementById(id).innerHTML = items.map((s,i)=>`<button class="${i===0?'on':''}" onclick="jump('${stage}',${i+1},this)"><b>${i+1} ${s[0]}</b><span>${s[1]}</span></button>`).join(''); }
+    function jump(stage,n,btn){ document.getElementById(stage).dataset.step=n; btn.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('on')); btn.classList.add('on'); }
+    function show(which){ document.getElementById('round').hidden = which!=='round'; document.getElementById('cross').hidden = which!=='cross'; document.getElementById('tab-round').classList.toggle('on', which==='round'); document.getElementById('tab-cross').classList.toggle('on', which==='cross'); }
+    render('round-steps', round, 'round-stage');
+    render('cross-steps', cross, 'cross-stage');
+  </script>
+</body>
+</html>
