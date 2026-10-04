@@ -7,28 +7,31 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css?v=6" />
   <style>
-    .study-hero { padding:120px 0 40px; }
-    .tabs { display:flex; gap:8px; flex-wrap:wrap; margin:18px 0; }
+    .study-hero { padding:120px 0 48px; }
+    .tabs { display:flex; gap:8px; flex-wrap:wrap; margin:18px 0 22px; }
     .tabs button { border:1px solid #e4e4e7; background:#fff; border-radius:999px; padding:10px 14px; font-weight:600; cursor:pointer; }
     .tabs button.on { background:#111; color:#fff; border-color:#111; }
-    .study-grid { display:grid; grid-template-columns:1.05fr .95fr; gap:22px; align-items:start; }
-    .stage { background:#111; border-radius:20px; min-height:320px; overflow:hidden; }
-    .stage svg { width:100%; height:340px; display:block; }
-    .car { offset-rotate:auto; animation:lap 12s linear infinite; }
-    .stage[data-step="1"] .car { animation-delay:0s; }
-    .stage[data-step="2"] .car { animation-delay:-2.2s; }
-    .stage[data-step="3"] .car { animation-delay:-4.4s; }
-    .stage[data-step="4"] .car { animation-delay:-6.6s; }
-    .stage[data-step="5"] .car { animation-delay:-8.8s; }
-    @keyframes lap { to { offset-distance:100%; } }
+    .study-grid { display:grid; grid-template-columns:1.15fr .85fr; gap:22px; align-items:start; }
+    .stage { background:#d7e7c8; border-radius:20px; overflow:hidden; border:1px solid #e4e4e7; }
+    .stage svg { width:100%; height:auto; display:block; }
+    .learner { offset-rotate:auto; animation:drive 8s linear infinite; }
+    .tab[data-step="1"] .learner { animation-delay:0s; }
+    .tab[data-step="2"] .learner { animation-delay:-1.6s; }
+    .tab[data-step="3"] .learner { animation-delay:-3.2s; }
+    .tab[data-step="4"] .learner { animation-delay:-4.8s; }
+    .tab[data-step="5"] .learner { animation-delay:-6.4s; }
+    @keyframes drive { to { offset-distance:100%; } }
     .steps { display:grid; gap:10px; }
     .steps button { text-align:left; border:1px solid #ececef; background:#fff; border-radius:14px; padding:14px; cursor:pointer; }
     .steps button.on { border-color:#6142ff; }
     .steps b { display:block; }
     .steps span { color:#6e6e6e; }
+    .legend { display:flex; gap:14px; flex-wrap:wrap; margin-top:10px; color:#444; font-size:14px; }
+    .swatch { width:18px; height:6px; display:inline-block; margin-right:6px; border-radius:99px; vertical-align:middle; }
     .routine { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:12px; }
     .routine i { background:#f4f4f4; border-radius:999px; padding:8px 12px; font-style:normal; font-weight:650; }
     @media (max-width:900px) { .study-grid { grid-template-columns:1fr; } .study-hero { padding-top:100px; } }
+    @media (prefers-reduced-motion:reduce) { .learner { animation:none; } }
   </style>
 </head>
 <body>
@@ -48,50 +51,36 @@
     <a href="index.html">Back to site</a>
     <p class="eyebrow">Study</p>
     <h1>Junction school</h1>
-    <p class="sub">Watch the car work through the two junctions that catch new drivers out. Follow the green line, read each step, and you'll walk into your first lesson already knowing what's coming.</p>
-    <div class="tabs">
-      <button class="on" id="tab-round" onclick="show('round')">Roundabout</button>
-      <button id="tab-cross" onclick="show('cross')">Controlled crossroads</button>
+    <p class="sub">Four separate drills. Tap a tab, then a step. The violet car is you. Red cars already on the junction have priority.</p>
+    <div class="tabs" id="tabs">
+      <button class="on" data-tab="left">First exit</button>
+      <button data-tab="straight">Straight ahead</button>
+      <button data-tab="right">Right turn</button>
+      <button data-tab="cross">Crossroads</button>
     </div>
-    <div class="study-grid" id="round">
-      <div class="stage" id="round-stage" data-step="1">
-        <svg viewBox="0 0 360 360">
-          <rect width="360" height="360" fill="#111"/>
-          <circle cx="180" cy="180" r="78" fill="none" stroke="#2a2a2a" stroke-width="46"/>
-          <circle cx="180" cy="180" r="34" fill="#1c1c1c"/>
-          <path d="M180 40 H250 C310 40 320 70 320 180 C320 290 290 320 180 320 C70 320 40 290 40 180 C40 70 70 40 180 40" fill="none" stroke="#3dd68c" stroke-width="4"/>
-          <g class="car" style="offset-path:path('M180 40 H250 C310 40 320 70 320 180 C320 290 290 320 180 320 C70 320 40 290 40 180 C40 70 70 40 180 40')"><rect x="-16" y="-8" width="32" height="16" rx="4" fill="#6142ff"/></g>
-        </svg>
-      </div>
-      <div class="steps" id="round-steps"></div>
-    </div>
-    <div class="study-grid" id="cross" hidden>
-      <div class="stage" id="cross-stage" data-step="1">
-        <svg viewBox="0 0 360 360">
-          <rect width="360" height="360" fill="#111"/>
-          <rect x="145" y="0" width="70" height="360" fill="#1a1a1a"/>
-          <rect x="0" y="145" width="360" height="70" fill="#1a1a1a"/>
-          <path d="M180 330 V210 H250 V150 H180 V30" fill="none" stroke="#3dd68c" stroke-width="4"/>
-          <g class="car" style="offset-path:path('M180 330 V210 H250 V150 H180 V30');animation-duration:10s"><rect x="-16" y="-8" width="32" height="16" rx="4" fill="#6142ff"/></g>
-          <circle cx="128" cy="128" r="6" fill="#e23b3b"/>
-        </svg>
-      </div>
-      <div class="steps" id="cross-steps"></div>
-    </div>
-    <p class="sub" style="margin-top:14px">Tap a step to jump the animation there. The loop replays automatically.</p>
+    <div id="panels"></div>
+    <div class="legend"><span><i class="swatch" style="background:#3dd68c"></i>Your path</span><span><i class="swatch" style="background:#e23b3b"></i>Traffic to give way to</span><span><i class="swatch" style="background:#6142ff"></i>You</span></div>
     <h2>The routine behind every junction</h2>
-    <p class="sub">Every junction, roundabout or crossroads, is the same five-step routine.</p>
+    <p class="sub">Same five moves at a roundabout or a set of lights.</p>
     <div class="routine"><i>Mirrors</i><span>→</span><i>Signal</i><span>→</span><i>Position</i><span>→</span><i>Speed</i><span>→</span><i>Look</i></div>
     <p style="margin-top:22px"><a class="btn btn-violet" href="index.html#book">Book a lesson</a></p>
   </main>
   <script>
-    const round = [["Approach","Ease off the gas early, check your mirrors and pick the correct lane. Left lane for the first exit, right lane if you're turning right."],["Give way","Stop at the line and look right. Traffic already on the roundabout has priority. Wait for a safe gap before you join."],["Enter","Turn left into the gap and keep your speed low while you join the flow."],["Circulate","Keep left around the island and hold your lane. Signal left just after you pass the exit before yours."],["Exit","Leave at your exit, cancel the signal and check your mirrors as you build speed away."]];
-    const cross = [["Approach","Mirrors, signal, position. Line up early for the turn you plan to make and control your speed on the way in."],["Observe","Scan the whole junction: the lights, oncoming traffic, pedestrians and anyone crossing."],["Stop at red","A red light means stop behind the line. Cross traffic has the green. That's what controlled means: everyone takes their turn."],["Green, go","On green, check it's clear and move off. Turning right? Give way to oncoming traffic before you cross their path."],["Complete","Cancel your signal, check your mirrors and build speed smoothly away from the junction."]];
-    function render(id, items, stage) { document.getElementById(id).innerHTML = items.map((s,i)=>`<button class="${i===0?'on':''}" onclick="jump('${stage}',${i+1},this)"><b>${i+1} ${s[0]}</b><span>${s[1]}</span></button>`).join(''); }
-    function jump(stage,n,btn){ document.getElementById(stage).dataset.step=n; btn.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('on')); btn.classList.add('on'); }
-    function show(which){ document.getElementById('round').hidden = which!=='round'; document.getElementById('cross').hidden = which!=='cross'; document.getElementById('tab-round').classList.toggle('on', which==='round'); document.getElementById('tab-cross').classList.toggle('on', which==='cross'); }
-    render('round-steps', round, 'round-stage');
-    render('cross-steps', cross, 'cross-stage');
+    const roads = `<rect width="640" height="480" fill="#cfe3b8"/><rect x="270" y="0" width="100" height="480" fill="#8d9398"/><rect x="0" y="190" width="640" height="100" fill="#8d9398"/><circle cx="320" cy="240" r="118" fill="#8d9398"/><circle cx="320" cy="240" r="62" fill="#7fbf4a" stroke="#f4f4f4" stroke-width="10"/><path d="M286 240 h68 M320 206 v68" stroke="#111" stroke-width="8"/><circle cx="320" cy="240" r="96" fill="none" stroke="#fff" stroke-dasharray="10 8" stroke-width="2"/>`;
+    function car(x, y, fill) { return `<g transform="translate(${x} ${y})"><rect x="-16" y="-8" width="32" height="16" rx="4" fill="${fill}"/><rect x="6" y="-6" width="6" height="12" fill="#fff" opacity=".7"/></g>`; }
+    const scenes = {
+      left: { title: "First exit", path: "M320 430 V300 C320 270 300 250 270 230 C230 200 200 210 160 240 H40", steps: [["Approach","Left lane. Signal left. Ease off early and check the mirrors."],["Give way","Look right. The red car already on the roundabout goes first."],["Enter","Take the gap and turn left onto the roundabout. Stay in the left lane."],["Signal","Keep the left signal on. You are leaving at the first exit."],["Exit","Leave, cancel the signal, and build speed only once you are straight."]] },
+      straight: { title: "Straight ahead", path: "M320 430 V310 C320 270 300 250 286 230 C250 180 250 150 286 120 C300 100 320 96 320 70 V30", steps: [["Approach","Left lane, unless signs say otherwise. No signal yet on a standard roundabout."],["Give way","Stop at the line if anything is coming from the right."],["Enter","Join and hold the left lane around the island."],["Signal left","Signal left as you pass the exit before yours."],["Exit","Leave at the opposite exit and check the left mirror as you go."]] },
+      right: { title: "Right turn", path: "M360 430 V320 C360 280 340 260 330 240 C300 160 250 130 250 180 C250 240 300 270 360 250 C430 226 470 250 500 240 H610", steps: [["Approach","Right lane. Signal right before you reach the line."],["Give way","Wait for a gap from the right. Do not cut across the left lane."],["Enter","Join in the right-hand lane and keep right of the island."],["Signal left","After you pass the straight-ahead exit, signal left and move across when it is clear."],["Exit","Leave on the right-hand exit, cancel the signal, and check mirrors."]] },
+      cross: { title: "Controlled crossroads", path: "M320 430 V300 H430 V180 H320 V40", steps: [["Approach","Mirrors, signal, position. Line up for the turn and lose speed early."],["Observe","Lights, oncoming cars, and anyone crossing. The red car has the green."],["Stop at red","Stop behind the line. Controlled means you wait your turn."],["Green, go","Move only when it is clear. Turning right, give way to oncoming traffic."],["Complete","Cancel the signal, check mirrors, and pull away smoothly."]] }
+    };
+    function panel(key, scene) {
+      const map = key === "cross" ? `<rect width="640" height="480" fill="#cfe3b8"/><rect x="270" y="0" width="100" height="480" fill="#8d9398"/><rect x="0" y="190" width="640" height="100" fill="#8d9398"/><circle cx="250" cy="175" r="8" fill="#e23b3b"/><circle cx="390" cy="305" r="8" fill="#3dd68c"/>${car(430,240,"#e23b3b")}` : roads + car(470,230,"#e23b3b");
+      return `<section class="tab study-grid" id="${key}" data-step="1" ${key==="left"?"":"hidden"}><div class="stage"><svg viewBox="0 0 640 480">${map}<path d="${scene.path}" fill="none" stroke="#3dd68c" stroke-width="6" stroke-linecap="round"/><g class="learner" style="offset-path:path('${scene.path}')"><rect x="-16" y="-8" width="32" height="16" rx="4" fill="#6142ff"/></g></svg></div><div><h2>${scene.title}</h2><div class="steps">${scene.steps.map((s,i)=>`<button class="${i===0?"on":""}" onclick="jump('${key}',${i+1},this)"><b>${i+1} ${s[0]}</b><span>${s[1]}</span></button>`).join("")}</div></div></section>`;
+    }
+    document.getElementById("panels").innerHTML = Object.entries(scenes).map(([k,v]) => panel(k,v)).join("");
+    document.getElementById("tabs").addEventListener("click", (e) => { const btn = e.target.closest("button"); if (!btn) return; document.querySelectorAll("#tabs button").forEach(b => b.classList.toggle("on", b === btn)); document.querySelectorAll(".tab").forEach(p => p.hidden = p.id !== btn.dataset.tab); });
+    function jump(id, n, btn) { document.getElementById(id).dataset.step = n; btn.parentElement.querySelectorAll("button").forEach(b => b.classList.remove("on")); btn.classList.add("on"); }
   </script>
 </body>
 </html>
