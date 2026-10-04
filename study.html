@@ -11,36 +11,29 @@
     .tabs { display:flex; gap:8px; flex-wrap:wrap; margin:18px 0 22px; }
     .tabs button { border:1px solid #e4e4e7; background:#fff; border-radius:999px; padding:10px 14px; font-weight:600; cursor:pointer; }
     .tabs button.on { background:#111; color:#fff; border-color:#111; }
-    .stage { background:#d7e6c8; border-radius:20px; overflow:hidden; border:1px solid #e4e4e7; }
+    .stage { background:#cfe3b8; border-radius:20px; overflow:hidden; border:1px solid #e4e4e7; }
     .stage svg { width:100%; height:auto; display:block; }
     .car { offset-rotate:auto; animation:go 10s linear infinite; }
-    .trail { stroke-dasharray:8 420; stroke-dashoffset:0; animation:trail 10s linear infinite; }
-    @keyframes go { 0%,10% { offset-distance:0%; } 30% { offset-distance:18%; } 60% { offset-distance:62%; } 90%,100% { offset-distance:100%; } }
-    @keyframes trail { 0%,10% { stroke-dashoffset:0; opacity:.35; } 90% { stroke-dashoffset:-420; opacity:.9; } 100% { opacity:.15; } }
+    .glow { fill:none; stroke-width:7; stroke-linecap:round; opacity:.35; stroke-dasharray:24 880; animation:glow 10s linear infinite; }
+    @keyframes go { 0%,10% { offset-distance:0%; } 30% { offset-distance:20%; } 90% { offset-distance:100%; } 100% { offset-distance:100%; } }
+    @keyframes glow { 0%,10% { stroke-dashoffset:0; opacity:.25; } 90% { stroke-dashoffset:-840; opacity:.9; } 100% { opacity:.1; } }
     .hide-blue .blue, .hide-green .green, .hide-orange .orange { display:none; }
-    .note { color:#555; margin-top:12px; }
     @media (max-width:900px) { .study-hero { padding-top:100px; } }
-    @media (prefers-reduced-motion:reduce) { .car, .trail { animation:none; } }
+    @media (prefers-reduced-motion:reduce) { .car, .glow { animation:none; } }
   </style>
 </head>
 <body>
   <header class="site">
     <div class="wrap nav">
       <a class="brand" href="index.html"><span class="mark">JS</span><span>JS Driving School<small>FEATHERSTONE</small></span></a>
-      <nav class="nav-links">
-        <a href="index.html#lessons">Lessons</a>
-        <a href="index.html#prices">Prices</a>
-        <a href="study.html">Study</a>
-        <a href="index.html#book">Book</a>
-      </nav>
-      <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('nav') && document.getElementById('nav').classList.toggle('open')">☰</button>
+      <nav class="nav-links"><a href="index.html#lessons">Lessons</a><a href="index.html#prices">Prices</a><a href="study.html">Study</a><a href="index.html#book">Book</a></nav>
     </div>
   </header>
   <main class="wrap study-hero">
     <a href="index.html">Back to site</a>
     <p class="eyebrow">Study</p>
     <h1>Three ways off the roundabout</h1>
-    <p class="sub">Locked top-down view. Blue takes the first exit, green goes straight, orange takes the right-hand exit. They start together on the south stop line.</p>
+    <p class="sub">Same locked view as the diagram. Blue left lane to the west exit, green middle lane to the north exit, orange right lane to the east exit.</p>
     <div class="tabs">
       <button class="on" data-show="all">All three</button>
       <button data-show="blue">Blue only</button>
@@ -48,31 +41,32 @@
       <button data-show="orange">Orange only</button>
     </div>
     <div class="stage" id="stage">
-      <svg viewBox="0 0 960 640">
-        <rect width="960" height="640" fill="#cfe3b8"/>
-        <rect x="390" y="0" width="180" height="640" fill="#8e949a"/>
-        <rect x="0" y="230" width="960" height="180" fill="#8e949a"/>
-        <circle cx="480" cy="320" r="168" fill="#8e949a"/>
-        <circle cx="480" cy="320" r="78" fill="#6fbf4a" stroke="#f7f7f7" stroke-width="10"/>
-        <circle cx="460" cy="300" r="10" fill="#2f6b32"/><circle cx="500" cy="336" r="8" fill="#2f6b32"/><circle cx="474" cy="348" r="6" fill="#245c28"/>
-        <circle cx="480" cy="320" r="118" fill="none" stroke="#fff" stroke-dasharray="12 10"/>
-        <path d="M430 430 h100" stroke="#fff" stroke-width="4"/>
-        <path d="M150 300 h24 M786 300 h24 M455 150 v24 M455 466 v24" stroke="#fff" stroke-width="8"/>
-        <g font-size="16" font-family="Inter Tight, sans-serif" fill="#fff" text-anchor="middle">
-          <circle cx="250" cy="250" r="16" fill="#1d3f73"/><text y="255">1</text>
-          <circle cx="390" cy="150" r="16" fill="#1d3f73"/><text y="155">2</text>
-          <circle cx="590" cy="150" r="16" fill="#1d3f73"/><text y="155">3</text>
-          <circle cx="640" cy="470" r="16" fill="#1d3f73"/><text y="475">4</text>
+      <svg viewBox="0 0 960 624">
+        <rect width="960" height="624" fill="#cfe3b8"/>
+        <circle cx="120" cy="80" r="46" fill="#6ea84a"/><circle cx="840" cy="70" r="50" fill="#6ea84a"/><circle cx="80" cy="540" r="48" fill="#6ea84a"/><circle cx="860" cy="540" r="42" fill="#6ea84a"/>
+        <rect x="390" y="0" width="180" height="624" fill="#8d9398"/>
+        <rect x="0" y="222" width="960" height="180" fill="#8d9398"/>
+        <circle cx="480" cy="312" r="168" fill="#8d9398"/>
+        <circle cx="480" cy="312" r="74" fill="#7fbf4a" stroke="#f7f7f7" stroke-width="14"/>
+        <path d="M446 312 h68 M480 278 v68" stroke="#111" stroke-width="10"/>
+        <circle cx="460" cy="292" r="8" fill="#2f6b32"/><circle cx="504" cy="328" r="7" fill="#2f6b32"/>
+        <circle cx="480" cy="312" r="118" fill="none" stroke="#fff" stroke-dasharray="12 10"/>
+        <path d="M430 430 h100" stroke="#fff" stroke-width="5"/>
+        <g font-size="15" font-family="Inter Tight,sans-serif" fill="#fff" text-anchor="middle">
+          <circle cx="250" cy="230" r="15" fill="#1d3f73"/><text y="235">1</text>
+          <circle cx="390" cy="140" r="15" fill="#1d3f73"/><text y="145">2</text>
+          <circle cx="590" cy="140" r="15" fill="#1d3f73"/><text y="145">3</text>
+          <circle cx="650" cy="470" r="15" fill="#1d3f73"/><text y="475">4</text>
         </g>
-        <path class="trail blue" d="M430 560 V450 A140 140 0 0 1 340 320 H20" fill="none" stroke="#2f6fe0" stroke-width="6" stroke-linecap="round"/>
-        <path class="trail green" d="M480 560 V450 A140 140 0 0 1 480 180 V20" fill="none" stroke="#2f9d4a" stroke-width="6" stroke-linecap="round"/>
-        <path class="trail orange" d="M530 560 V450 A140 140 0 1 1 620 320 H940" fill="none" stroke="#e07a2f" stroke-width="6" stroke-linecap="round"/>
-        <g class="car blue" style="offset-path:path('M430 560 V450 A140 140 0 0 1 340 320 H20')"><rect x="-16" y="-8" width="32" height="16" rx="4" fill="#2f6fe0"/></g>
-        <g class="car green" style="offset-path:path('M480 560 V450 A140 140 0 0 1 480 180 V20')"><rect x="-16" y="-8" width="32" height="16" rx="4" fill="#2f9d4a"/></g>
-        <g class="car orange" style="offset-path:path('M530 560 V450 A140 140 0 1 1 620 320 H940')"><rect x="-16" y="-8" width="32" height="16" rx="4" fill="#e07a2f"/></g>
+        <path class="glow blue" d="M430 560 V450 A140 140 0 0 1 340 312 H30" stroke="#2f6fe0"/>
+        <path class="glow green" d="M480 560 V450 A140 140 0 0 1 520 150 C620 80 760 50 900 70" stroke="#2f9d4a"/>
+        <path class="glow orange" d="M530 560 V450 A140 140 0 1 1 640 312 H940" stroke="#e07a2f"/>
+        <g class="car blue" style="offset-path:path('M430 560 V450 A140 140 0 0 1 340 312 H30')"><rect x="-18" y="-9" width="36" height="18" rx="5" fill="#2f6fe0"/></g>
+        <g class="car green" style="offset-path:path('M480 560 V450 A140 140 0 0 1 520 150 C620 80 760 50 900 70')"><rect x="-18" y="-9" width="36" height="18" rx="5" fill="#2f9d4a"/></g>
+        <g class="car orange" style="offset-path:path('M530 560 V450 A140 140 0 1 1 640 312 H940')"><rect x="-18" y="-9" width="36" height="18" rx="5" fill="#e07a2f"/></g>
       </svg>
     </div>
-    <p class="note">Ten-second loop. They wait on the line, move off together, then each holds its own lane. The line brightens under the car and fades behind it.</p>
+    <p class="sub" style="margin-top:12px">Ten-second loop. They wait on the south line, move off together, then each follows its own line off the frame. Cars stay the same size and face the direction of travel.</p>
     <p style="margin-top:18px"><a class="btn btn-violet" href="index.html#book">Book a lesson</a></p>
   </main>
   <script>
