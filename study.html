@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Junction school | JS Driving School</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=8" />
+  <link rel="stylesheet" href="styles.css?v=9" />
   <style>
     .study-hero { padding: 120px 0 56px; }
     .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 18px 0 22px; }
@@ -21,39 +21,29 @@
     .tabs button.blue.on { background: #1d4ed8; border-color: #1d4ed8; }
     .tabs button.green.on { background: #15803d; border-color: #15803d; }
     .tabs button.orange.on { background: #c2410c; border-color: #c2410c; }
-    .panel { display: none; }
-    .panel.on { display: block; }
     .stage {
-      position: relative;
+      background: #f4f5f7;
       border-radius: 20px;
       overflow: hidden;
       border: 1px solid #e4e4e7;
-      background: #d5d8d4;
       line-height: 0;
     }
-    .stage img { width: 100%; height: auto; display: block; }
-    .stage svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-    .glow { fill: none; stroke-width: 12; stroke-linecap: round; stroke-linejoin: round; opacity: .2; }
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
-    .step {
-      background: #fff;
-      border: 1px solid #e4e4e7;
-      border-radius: 14px;
-      padding: 12px 14px;
-    }
-    .step b { display: block; margin-bottom: 4px; }
-    .step.blue { border-top: 3px solid #2563eb; }
-    .step.green { border-top: 3px solid #16a34a; }
-    .step.orange { border-top: 3px solid #ea580c; }
-    .note { margin-top: 14px; color: #3f3f46; }
-    .lamp { fill: #fbbf24; opacity: 0; }
-    @media (max-width: 800px) {
-      .study-hero { padding-top: 100px; }
-      .steps { grid-template-columns: 1fr; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .stage svg { animation: none; }
-    }
+    .stage svg { width: 100%; height: auto; display: block; }
+    .stage[data-show="blue"] #pg,
+    .stage[data-show="blue"] #po,
+    .stage[data-show="blue"] .route-pg,
+    .stage[data-show="blue"] .route-po,
+    .stage[data-show="green"] #pb,
+    .stage[data-show="green"] #po,
+    .stage[data-show="green"] .route-pb,
+    .stage[data-show="green"] .route-po,
+    .stage[data-show="orange"] #pb,
+    .stage[data-show="orange"] #pg,
+    .stage[data-show="orange"] .route-pb,
+    .stage[data-show="orange"] .route-pg { visibility: hidden; }
+    .note { margin-top: 14px; color: #3f3f46; max-width: 760px; }
+    @media (max-width: 900px) { .study-hero { padding-top: 100px; } }
+    @media (prefers-reduced-motion: reduce) { .stage svg { animation: none; } }
   </style>
 </head>
 <body>
@@ -71,138 +61,166 @@
   <main class="wrap study-hero">
     <a href="index.html">Back to site</a>
     <p class="eyebrow">Study</p>
-    <h1>Clockwise routes, split by colour</h1>
-    <p class="sub">Left-hand traffic, clockwise only. All three enter from the south. Blue leaves west, green leaves north, orange goes the long way round and leaves east.</p>
-    <div class="tabs" role="tablist">
+    <h1>Clockwise routes</h1>
+    <p class="sub">Your roundabout. Left-hand traffic. Blue, green and orange go first once the north car holds the east traffic on the red line.</p>
+    <div class="tabs">
       <button class="on" data-show="all" type="button">All three</button>
       <button class="blue" data-show="blue" type="button">Blue</button>
       <button class="green" data-show="green" type="button">Green</button>
       <button class="orange" data-show="orange" type="button">Orange</button>
     </div>
-
-    <section class="panel on" id="panel-all" data-mode="all"></section>
-    <section class="panel" id="panel-blue" data-mode="blue"></section>
-    <section class="panel" id="panel-green" data-mode="green"></section>
-    <section class="panel" id="panel-orange" data-mode="orange"></section>
-
-    <div class="steps">
-      <article class="step blue">
-        <b>Blue · first exit, west</b>
-        Left lane. Left signal on from the start. Leave at the first exit.
-      </article>
-      <article class="step green">
-        <b>Green · second exit, north</b>
-        Middle lane. Left signal as you pass the first exit. Leave straight ahead.
-      </article>
-      <article class="step orange">
-        <b>Orange · third exit, east</b>
-        Right lane. Stay inner past the first exit. Left signal at the second exit, drift to the outer lane, leave at the third.
-      </article>
+    <div class="stage" id="stage" data-show="all">
+      <svg id="s" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="c"><rect width="800" height="800" rx="40"/></clipPath>
+          <filter id="g"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <g id="arm">
+            <path d="M400 625L416 725H384Z" fill="#ece6d2" stroke="#fff" stroke-width="2"/>
+            <g stroke="#fff" stroke-width="3" stroke-dasharray="18 14" fill="none"><path d="M327 740V640M362 740V640M455 740V640M345 800V740"/></g>
+            <g fill="#fff" id="zeb"><rect x="296" y="650" width="10" height="26"/><rect x="314" y="650" width="10" height="26"/><rect x="332" y="650" width="10" height="26"/><rect x="350" y="650" width="10" height="26"/><rect x="368" y="650" width="10" height="26"/><rect x="440" y="650" width="10" height="26"/><rect x="458" y="650" width="10" height="26"/><rect x="476" y="650" width="10" height="26"/></g>
+            <path d="M290 640H396" stroke="#fff" stroke-width="4"/>
+          </g>
+        </defs>
+        <g clip-path="url(#c)">
+          <rect width="800" height="800" fill="#7fb04a"/>
+          <rect x="290" width="220" height="800" fill="#6b6e73"/><rect y="290" width="800" height="220" fill="#6b6e73"/>
+          <circle cx="400" cy="400" r="215" fill="#6b6e73"/>
+          <g fill="#2f6b2a"><circle cx="120" cy="130" r="38"/><circle cx="190" cy="190" r="26"/><circle cx="90" cy="200" r="22"/><circle cx="680" cy="120" r="40"/><circle cx="620" cy="190" r="26"/><circle cx="130" cy="660" r="40"/><circle cx="200" cy="600" r="26"/><circle cx="680" cy="650" r="40"/><circle cx="610" cy="700" r="26"/></g>
+          <g fill="#fff"><use href="#arm"/><use href="#arm" transform="rotate(90 400 400)"/><use href="#arm" transform="rotate(180 400 400)"/><use href="#arm" transform="rotate(270 400 400)"/></g>
+          <circle cx="400" cy="400" r="155" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="16 12"/>
+          <circle cx="400" cy="400" r="108" fill="#ece6d2" stroke="#fff" stroke-width="3"/><circle cx="400" cy="400" r="92" fill="#6fae45"/>
+          <g fill="#2f6b2a"><circle cx="370" cy="380" r="14"/><circle cx="425" cy="420" r="12"/><circle cx="410" cy="365" r="9"/></g>
+          <g fill="#fff" font-size="34" text-anchor="middle" font-family="sans-serif"><text x="310" y="778">↰</text><text x="345" y="778">↑</text><text x="380" y="778">↱</text></g>
+          <g id="lines" fill="none" stroke-width="7" stroke-linecap="round" filter="url(#g)">
+            <path id="pb" stroke="#2f80ed" d="M310 810V620C310 565 225 475 150 475L-10 475"/>
+            <path id="pg" stroke="#2fb34a" d="M345 810V620C345 520 215 520 215 400A185 185 0 0 1 290 251.3C322 227.5 325 190 325 150L325 -10"/>
+            <path id="po" stroke="#f08a24" d="M380 810V640C380 540 270 520 270 400A130 130 0 0 1 483.6 300.4C514 326 570 325 640 325L810 325"/>
+          </g>
+          <g id="tp" fill="none"></g>
+          <rect id="hold" x="292" y="637" width="106" height="6" rx="3" fill="#e53935" opacity="0"/>
+          <rect id="holdE" x="637" y="406" width="6" height="102" rx="3" fill="#e53935" opacity="0"/>
+          <g id="cars"></g>
+          <g font-family="sans-serif" font-weight="700" font-size="32" fill="#fff" text-anchor="middle">
+            <g fill="#1d3a73"><circle cx="62" cy="738" r="26"/><circle cx="62" cy="62" r="26"/><circle cx="738" cy="62" r="26"/><circle cx="738" cy="738" r="26"/></g>
+            <text x="62" y="750">1</text><text x="62" y="74">2</text><text x="738" y="74">3</text><text x="738" y="750">4</text>
+          </g>
+        </g>
+      </svg>
     </div>
-    <p class="note">Ten-second loop. One second on the south line, then they move off together. The amber lamp is the left signal. Cars stay the same size and face the way they are travelling.</p>
+    <p class="note">Left-hand traffic, clockwise only. All three cars enter from the south: blue exits west, green exits north, orange goes the long way round and exits east. Blue signals left from the start. Green signals left as it passes the first exit. Orange stays inner past the first exit, then signals left at the second exit and drifts to the outer lane before leaving at the third. The grey cars sit in three lanes and signal too. A car from the north holds the grey east traffic at its red line, so blue, green and orange, which have driven up to the line, go first. 14-second loop.</p>
     <p style="margin-top:18px"><a class="btn btn-violet" href="index.html#book">Book a lesson</a></p>
   </main>
   <script>
-    var ROUTES = {
-      blue: {
-        d: "M 730 532 C 640 500 500 478 360 458 C 240 440 175 400 148 340 C 130 280 136 220 120 180 C 100 150 60 155 20 168",
-        stroke: "#2f6fe0",
-        paint: "#2563eb",
-        signal: 0
-      },
-      green: {
-        d: "M 785 548 C 700 510 560 470 420 430 C 320 395 265 345 252 285 C 245 230 290 190 370 165 C 480 135 620 108 740 78 C 810 58 860 48 910 36",
-        stroke: "#22a34a",
-        paint: "#16a34a",
-        signal: 0.36
-      },
-      orange: {
-        d: "M 820 552 C 720 515 560 468 430 425 C 340 390 285 345 268 290 C 255 230 290 175 370 145 C 460 112 560 118 660 145 C 750 172 800 220 818 280 C 838 345 880 372 945 392",
-        stroke: "#e07a2f",
-        paint: "#ea580c",
-        signal: 0.55
+    const NS = "http://www.w3.org/2000/svg", SPEED = 150, LOOP = 14;
+    (function () {
+      const rad = a => a * Math.PI / 180, sm = u => u * u * (3 - 2 * u);
+      let dd = "M380 810V640C380 540 270 520 270 400";
+      for (let a = 180; a >= 40; a -= 2) {
+        const u = Math.min(1, Math.max(0, (115 - a) / 55)), r = 130 + 55 * sm(u);
+        dd += "L" + (400 + r * Math.cos(rad(a))).toFixed(1) + " " + (400 - r * Math.sin(rad(a))).toFixed(1);
       }
-    };
-
-    function stageMarkup(mode) {
-      var names = mode === "all" ? ["blue", "green", "orange"] : [mode];
-      var glows = names.map(function (name) {
-        var r = ROUTES[name];
-        return '<path class="glow" data-name="' + name + '" d="' + r.d + '" stroke="' + r.stroke + '" />';
-      }).join("");
-      var cars = names.map(function (name) {
-        var r = ROUTES[name];
-        return '<g class="car" data-name="' + name + '" data-signal="' + r.signal + '">' +
-          '<rect x="-22" y="-10" width="44" height="20" rx="5" fill="' + r.paint + '" />' +
-          '<rect x="8" y="-6" width="10" height="12" rx="2" fill="#f8fafc" opacity=".85" />' +
-          '<circle class="lamp" cx="12" cy="-7.5" r="2.5" />' +
-          "</g>";
-      }).join("");
-      return '<div class="stage"><img src="assets/roundabout.jpg" alt="" />' +
-        '<svg viewBox="0 0 960 624" preserveAspectRatio="none" aria-hidden="true">' + glows + cars + "</svg></div>";
+      const A = rad(40), x = 400 + 185 * Math.cos(A), y = 400 - 185 * Math.sin(A);
+      dd += "C" + (x + 35 * Math.sin(A)).toFixed(1) + " " + (y + 35 * Math.cos(A)).toFixed(1) + " 590 325 640 325L810 325";
+      document.getElementById("po").setAttribute("d", dd);
+    })();
+    const defs = [
+      { id: "pb", col: "#2f80ed", ap: 0.2, t0: 4.6, ex: [150, 475], pre: 9999, post: 40 },
+      { id: "pg", col: "#2fb34a", ap: 0.3, t0: 4.8, a: [223, 447], ex: [290, 251.3], post: 100 },
+      { id: "po", col: "#f08a24", ap: 0.4, t0: 5.0, a: [345.1, 282.2], ex: [640, 325], post: 60 }
+    ];
+    function near(p, pt) {
+      let b = 0, bd = 1e9;
+      const L = p.getTotalLength();
+      for (let s = 0; s <= L; s += 3) {
+        const q = p.getPointAtLength(s), e = (q.x - pt[0]) ** 2 + (q.y - pt[1]) ** 2;
+        if (e < bd) { bd = e; b = s; }
+      }
+      return b;
     }
-
-    document.getElementById("panel-all").innerHTML = stageMarkup("all");
-    document.getElementById("panel-blue").innerHTML = stageMarkup("blue");
-    document.getElementById("panel-green").innerHTML = stageMarkup("green");
-    document.getElementById("panel-orange").innerHTML = stageMarkup("orange");
-
-    var actors = [];
-    document.querySelectorAll(".panel").forEach(function (panel) {
-      panel.querySelectorAll(".car").forEach(function (car) {
-        var name = car.getAttribute("data-name");
-        var glow = panel.querySelector('.glow[data-name="' + name + '"]');
-        var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-        path.setAttribute("d", ROUTES[name].d);
-        actors.push({
-          car: car,
-          glow: glow,
-          path: path,
-          signal: Number(car.getAttribute("data-signal")),
-          len: path.getTotalLength()
-        });
-      });
+    const cars = document.getElementById("cars");
+    const GC = (function () {
+      const R = x => x * Math.PI / 180, S = u => u * u * (3 - 2 * u);
+      let c = "M790 420L640 420C600 420 523.7 450 506.5 474.6";
+      for (let a = -35; a >= -233; a -= 2) {
+        const u = Math.min(1, Math.max(0, (-175 - a) / 40)), r = 130 + 55 * S(u);
+        c += "L" + (400 + r * Math.cos(R(a))).toFixed(1) + " " + (400 - r * Math.sin(R(a))).toFixed(1);
+      }
+      return c + "L289.7 251.5C322 227.5 325 190 325 150L325 -10";
+    })();
+    const TD = [
+      ["M790 490L640 490C600 490 561 496 541.7 518.9C519.2 545.7 475 600 475 640L475 810", 0.2, 130, 5.0, { ex: [475, 640], post: 40 }],
+      ["M790 455L640 455C600 455 568.7 481.5 551.5 506.1A185 185 0 0 1 269.2 530.8C244.5 506.1 210 475 150 475L-10 475", 0.3, 130, 5.2, { a: [506.1, 551.5], ex: [150, 475], post: 40 }],
+      [GC, 0.4, 130, 5.4, { a: [270.5, 411.3], ex: [325, 150], post: 60 }],
+      ["M435 30L435 120C435 170 457.9 219.8 492.5 239.8A185 185 0 0 1 492.5 560.2C462.2 577.7 435 610 435 640L435 810", 0.6, null, null, { a: [582.2, 367.9], ex: [435, 640], post: 40 }]
+    ];
+    const T = TD.map(([d, t0, stop, rel, sg]) => {
+      const p = document.createElementNS(NS, "path");
+      p.setAttribute("d", d);
+      document.getElementById("tp").appendChild(p);
+      const g = document.createElementNS(NS, "g");
+      g.innerHTML = '<rect x="-11" y="-20" width="22" height="40" rx="6" fill="#8a8f98" stroke="#fff" stroke-width="2"/><rect x="-8" y="-12" width="16" height="9" rx="2" fill="#fff" opacity=".6"/><circle class="ind" cx="-12" cy="-17" r="4.5" fill="#ffb300" stroke="#fff" stroke-width="1" opacity="0"/><circle class="ind" cx="-12" cy="17" r="4.5" fill="#ffb300" stroke="#fff" stroke-width="1" opacity="0"/>';
+      cars.appendChild(g);
+      const ee = near(p, sg.ex);
+      return { p, g, t0, stop, rel, len: p.getTotalLength(), ind: g.querySelectorAll(".ind"), s0: sg.a ? near(p, sg.a) : -1, s1: ee + sg.post };
     });
-
-    function progress(t) {
-      if (t < 0.1) return 0;
-      if (t < 0.3) return ((t - 0.1) / 0.2) * 0.18;
-      if (t < 0.9) return 0.18 + ((t - 0.3) / 0.6) * 0.82;
-      return 1;
+    function tdist(c, t) {
+      const s = t - c.t0;
+      if (s < 0) return 0;
+      const d1 = SPEED * s;
+      if (c.rel == null) return d1;
+      if (d1 <= c.stop) return d1;
+      if (t < c.rel) return c.stop;
+      const u = t - c.rel;
+      return c.stop + (u < 0.6 ? SPEED * u * u / 1.2 : SPEED * (u - 0.3));
     }
-
-    var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var started = performance.now();
-
+    defs.forEach(d => {
+      d.p = document.getElementById(d.id);
+      d.len = d.p.getTotalLength();
+      const g = document.createElementNS(NS, "g");
+      g.setAttribute("class", "route-" + d.id);
+      g.innerHTML = '<rect x="-11" y="-20" width="22" height="40" rx="6" fill="' + d.col + '" stroke="#fff" stroke-width="2"/><rect x="-8" y="-12" width="16" height="9" rx="2" fill="#fff" opacity=".6"/><circle class="ind" cx="-12" cy="-17" r="4.5" fill="#ffb300" stroke="#fff" stroke-width="1" opacity="0"/><circle class="ind" cx="-12" cy="17" r="4.5" fill="#ffb300" stroke="#fff" stroke-width="1" opacity="0"/>';
+      cars.appendChild(g);
+      d.g = g;
+      const e = near(d.p, d.ex);
+      d.s0 = d.a ? near(d.p, d.a) : Math.max(-1, e - d.pre);
+      d.s1 = e + d.post;
+      d.ind = g.querySelectorAll(".ind");
+    });
+    const t0 = performance.now();
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     function frame(now) {
-      var t = reduced ? 0 : ((now - started) % 10000) / 10000;
-      var p = progress(t);
-      actors.forEach(function (a) {
-        var d = Math.min(a.len - 0.5, Math.max(0, p * a.len));
-        var a0 = a.path.getPointAtLength(d);
-        var a1 = a.path.getPointAtLength(Math.min(a.len, d + 6));
-        var ang = Math.atan2(a1.y - a0.y, a1.x - a0.x) * 180 / Math.PI;
-        a.car.setAttribute("transform", "translate(" + a0.x + " " + a0.y + ") rotate(" + ang + ")");
-        var signalling = p >= a.signal && t < 0.92;
-        var blink = signalling && Math.floor(t * 12.5) % 2 === 0;
-        a.car.querySelector(".lamp").setAttribute("opacity", blink ? "1" : "0");
-        var fade = t < 0.1 ? 0.12 : t > 0.9 ? (1 - t) / 0.1 : 0.72;
-        a.glow.style.opacity = String(fade);
-        a.glow.style.strokeDasharray = a.len + " " + a.len;
-        a.glow.style.strokeDashoffset = String(a.len * (1 - p));
+      const t = reduced ? 0 : ((now - t0) / 1000) % LOOP;
+      const fade = t > 13 ? 1 - (t - 13) : 1;
+      T.forEach(c => {
+        const dd = Math.max(0, Math.min(c.len, tdist(c, t))), a = c.p.getPointAtLength(dd), b = c.p.getPointAtLength(Math.min(c.len, dd + 2)), q = c.p.getPointAtLength(Math.max(0, dd - 2));
+        c.g.setAttribute("transform", "translate(" + a.x + " " + a.y + ") rotate(" + (Math.atan2(b.y - q.y, b.x - q.x) * 180 / Math.PI + 90) + ")");
+        c.g.style.opacity = (t < c.t0 || dd >= c.len) ? 0 : 1;
+        const on = dd > c.s0 && dd < c.s1 && ((t * 2.5) % 1 < 0.5);
+        c.ind.forEach(i => i.setAttribute("opacity", on ? 1 : 0));
+      });
+      const bl = ((t * 2) % 1 < .5) ? .95 : .4;
+      document.getElementById("hold").setAttribute("opacity", t < 4.4 ? bl : 0);
+      document.getElementById("holdE").setAttribute("opacity", (t > 0.8 && t < 5.0) ? bl : 0);
+      defs.forEach(d => {
+        const dist = Math.max(0, Math.min(d.len, tdist({ t0: d.ap, stop: 148, rel: d.t0 }, t)));
+        const a = d.p.getPointAtLength(dist), b = d.p.getPointAtLength(Math.min(d.len, dist + 2)), c = d.p.getPointAtLength(Math.max(0, dist - 2));
+        const ang = Math.atan2(b.y - c.y, b.x - c.x) * 180 / Math.PI + 90;
+        d.g.setAttribute("transform", "translate(" + a.x + " " + a.y + ") rotate(" + ang + ")");
+        d.g.style.opacity = dist >= d.len ? 0 : 1;
+        const on = dist > d.s0 && dist < d.s1 && ((t * 2.5) % 1 < 0.5);
+        d.ind.forEach(i => i.setAttribute("opacity", on ? 1 : 0));
+        const seg = Math.min(dist, 140);
+        d.p.style.strokeDasharray = seg + " " + (d.len + 2000);
+        d.p.style.strokeDashoffset = -(dist - seg);
+        d.p.style.opacity = (t < d.t0 ? 0.35 : 1) * fade;
       });
       if (!reduced) requestAnimationFrame(frame);
     }
     requestAnimationFrame(frame);
-
     document.querySelectorAll(".tabs button").forEach(function (btn) {
       btn.addEventListener("click", function () {
-        document.querySelectorAll(".tabs button").forEach(function (b) {
-          b.classList.toggle("on", b === btn);
-        });
-        document.querySelectorAll(".panel").forEach(function (panel) {
-          panel.classList.toggle("on", panel.id === "panel-" + btn.dataset.show);
-        });
+        document.querySelectorAll(".tabs button").forEach(function (b) { b.classList.toggle("on", b === btn); });
+        document.getElementById("stage").dataset.show = btn.dataset.show;
       });
     });
   </script>
