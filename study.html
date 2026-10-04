@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Junction school | JS Driving School</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=7" />
+  <link rel="stylesheet" href="styles.css?v=8" />
   <style>
     .study-hero { padding: 120px 0 56px; }
     .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 18px 0 22px; }
@@ -18,6 +18,11 @@
       cursor: pointer;
     }
     .tabs button.on { background: #111; color: #fff; border-color: #111; }
+    .tabs button.blue.on { background: #1d4ed8; border-color: #1d4ed8; }
+    .tabs button.green.on { background: #15803d; border-color: #15803d; }
+    .tabs button.orange.on { background: #c2410c; border-color: #c2410c; }
+    .panel { display: none; }
+    .panel.on { display: block; }
     .stage {
       position: relative;
       border-radius: 20px;
@@ -26,50 +31,28 @@
       background: #d5d8d4;
       line-height: 0;
     }
-    .stage img {
-      width: 100%;
-      height: auto;
-      display: block;
+    .stage img { width: 100%; height: auto; display: block; }
+    .stage svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+    .glow { fill: none; stroke-width: 12; stroke-linecap: round; stroke-linejoin: round; opacity: .2; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
+    .step {
+      background: #fff;
+      border: 1px solid #e4e4e7;
+      border-radius: 14px;
+      padding: 12px 14px;
     }
-    .stage svg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-    .glow {
-      fill: none;
-      stroke-width: 14;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      opacity: 0;
-      filter: url(#soft);
-      animation: glow 10s linear infinite;
-    }
-    .car {
-      offset-rotate: auto;
-      animation: go 10s linear infinite;
-    }
-    @keyframes go {
-      0%, 10% { offset-distance: 0%; }
-      30% { offset-distance: 18%; }
-      90%, 100% { offset-distance: 100%; }
-    }
-    @keyframes glow {
-      0%, 10% { opacity: 0; }
-      18% { opacity: .35; }
-      30% { opacity: .72; }
-      88% { opacity: .8; }
-      100% { opacity: 0; }
-    }
-    .hide-blue .blue, .hide-green .green, .hide-orange .orange { display: none; }
+    .step b { display: block; margin-bottom: 4px; }
+    .step.blue { border-top: 3px solid #2563eb; }
+    .step.green { border-top: 3px solid #16a34a; }
+    .step.orange { border-top: 3px solid #ea580c; }
     .note { margin-top: 14px; color: #3f3f46; }
-    @media (max-width: 900px) { .study-hero { padding-top: 100px; } }
+    .lamp { fill: #fbbf24; opacity: 0; }
+    @media (max-width: 800px) {
+      .study-hero { padding-top: 100px; }
+      .steps { grid-template-columns: 1fr; }
+    }
     @media (prefers-reduced-motion: reduce) {
-      .car, .glow { animation: none; }
-      .glow { opacity: .45; }
-      .car { offset-distance: 0%; }
+      .stage svg { animation: none; }
     }
   </style>
 </head>
@@ -88,59 +71,138 @@
   <main class="wrap study-hero">
     <a href="index.html">Back to site</a>
     <p class="eyebrow">Study</p>
-    <h1>Three ways off the roundabout</h1>
-    <p class="sub">The diagram is the uploaded picture, left as it is. Only the three cars and the route glow move.</p>
-    <div class="tabs">
-      <button class="on" data-show="all">All three</button>
-      <button data-show="blue">Blue only</button>
-      <button data-show="green">Green only</button>
-      <button data-show="orange">Orange only</button>
+    <h1>Clockwise routes, split by colour</h1>
+    <p class="sub">Left-hand traffic, clockwise only. All three enter from the south. Blue leaves west, green leaves north, orange goes the long way round and leaves east.</p>
+    <div class="tabs" role="tablist">
+      <button class="on" data-show="all" type="button">All three</button>
+      <button class="blue" data-show="blue" type="button">Blue</button>
+      <button class="green" data-show="green" type="button">Green</button>
+      <button class="orange" data-show="orange" type="button">Orange</button>
     </div>
-    <div class="stage" id="stage">
-      <img src="assets/roundabout.jpg" alt="Roundabout diagram with the road, lanes, crossings, island and the blue, green and orange routes" />
-      <svg viewBox="0 0 960 624" preserveAspectRatio="none" aria-hidden="true">
-        <defs>
-          <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="1.2" />
-          </filter>
-          <linearGradient id="paint-blue" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#1e3a8a" />
-            <stop offset="0.72" stop-color="#2563eb" />
-            <stop offset="1" stop-color="#dbeafe" />
-          </linearGradient>
-          <linearGradient id="paint-green" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#14532d" />
-            <stop offset="0.72" stop-color="#16a34a" />
-            <stop offset="1" stop-color="#dcfce7" />
-          </linearGradient>
-          <linearGradient id="paint-orange" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#9a3412" />
-            <stop offset="0.72" stop-color="#ea580c" />
-            <stop offset="1" stop-color="#ffedd5" />
-          </linearGradient>
-        </defs>
-        <path class="glow blue" d="M 730 532 C 640 500 500 478 360 458 C 240 440 175 400 148 340 C 130 280 136 220 120 180 C 100 150 60 155 20 168" stroke="#2f6fe0" />
-        <path class="glow green" d="M 785 548 C 700 510 560 470 420 430 C 320 395 265 345 252 285 C 245 230 290 190 370 165 C 480 135 620 108 740 78 C 810 58 860 48 910 36" stroke="#22a34a" />
-        <path class="glow orange" d="M 840 564 C 760 525 620 482 470 445 C 350 410 270 365 245 300 C 225 230 270 175 360 145 C 470 112 600 108 710 140 C 780 165 805 210 812 270 C 822 340 860 385 945 400" stroke="#e07a2f" />
-        <rect class="car blue" x="-21" y="-10" width="42" height="20" rx="5" fill="url(#paint-blue)" style="offset-path:path('M 730 532 C 640 500 500 478 360 458 C 240 440 175 400 148 340 C 130 280 136 220 120 180 C 100 150 60 155 20 168')" />
-        <rect class="car green" x="-21" y="-10" width="42" height="20" rx="5" fill="url(#paint-green)" style="offset-path:path('M 785 548 C 700 510 560 470 420 430 C 320 395 265 345 252 285 C 245 230 290 190 370 165 C 480 135 620 108 740 78 C 810 58 860 48 910 36')" />
-        <rect class="car orange" x="-21" y="-10" width="42" height="20" rx="5" fill="url(#paint-orange)" style="offset-path:path('M 840 564 C 760 525 620 482 470 445 C 350 410 270 365 245 300 C 225 230 270 175 360 145 C 470 112 600 108 710 140 C 780 165 805 210 812 270 C 822 340 860 385 945 400')" />
-      </svg>
+
+    <section class="panel on" id="panel-all" data-mode="all"></section>
+    <section class="panel" id="panel-blue" data-mode="blue"></section>
+    <section class="panel" id="panel-green" data-mode="green"></section>
+    <section class="panel" id="panel-orange" data-mode="orange"></section>
+
+    <div class="steps">
+      <article class="step blue">
+        <b>Blue · first exit, west</b>
+        Left lane. Left signal on from the start. Leave at the first exit.
+      </article>
+      <article class="step green">
+        <b>Green · second exit, north</b>
+        Middle lane. Left signal as you pass the first exit. Leave straight ahead.
+      </article>
+      <article class="step orange">
+        <b>Orange · third exit, east</b>
+        Right lane. Stay inner past the first exit. Left signal at the second exit, drift to the outer lane, leave at the third.
+      </article>
     </div>
-    <p class="note">Ten-second loop. They wait on the south approach, move off together, then each follows its own line: blue off to the west, green off to the north, orange off to the east. The lines fade in the last second. Cars stay the same size and face the way they are travelling.</p>
+    <p class="note">Ten-second loop. One second on the south line, then they move off together. The amber lamp is the left signal. Cars stay the same size and face the way they are travelling.</p>
     <p style="margin-top:18px"><a class="btn btn-violet" href="index.html#book">Book a lesson</a></p>
   </main>
   <script>
+    var ROUTES = {
+      blue: {
+        d: "M 730 532 C 640 500 500 478 360 458 C 240 440 175 400 148 340 C 130 280 136 220 120 180 C 100 150 60 155 20 168",
+        stroke: "#2f6fe0",
+        paint: "#2563eb",
+        signal: 0
+      },
+      green: {
+        d: "M 785 548 C 700 510 560 470 420 430 C 320 395 265 345 252 285 C 245 230 290 190 370 165 C 480 135 620 108 740 78 C 810 58 860 48 910 36",
+        stroke: "#22a34a",
+        paint: "#16a34a",
+        signal: 0.36
+      },
+      orange: {
+        d: "M 820 552 C 720 515 560 468 430 425 C 340 390 285 345 268 290 C 255 230 290 175 370 145 C 460 112 560 118 660 145 C 750 172 800 220 818 280 C 838 345 880 372 945 392",
+        stroke: "#e07a2f",
+        paint: "#ea580c",
+        signal: 0.55
+      }
+    };
+
+    function stageMarkup(mode) {
+      var names = mode === "all" ? ["blue", "green", "orange"] : [mode];
+      var glows = names.map(function (name) {
+        var r = ROUTES[name];
+        return '<path class="glow" data-name="' + name + '" d="' + r.d + '" stroke="' + r.stroke + '" />';
+      }).join("");
+      var cars = names.map(function (name) {
+        var r = ROUTES[name];
+        return '<g class="car" data-name="' + name + '" data-signal="' + r.signal + '">' +
+          '<rect x="-22" y="-10" width="44" height="20" rx="5" fill="' + r.paint + '" />' +
+          '<rect x="8" y="-6" width="10" height="12" rx="2" fill="#f8fafc" opacity=".85" />' +
+          '<circle class="lamp" cx="12" cy="-7.5" r="2.5" />' +
+          "</g>";
+      }).join("");
+      return '<div class="stage"><img src="assets/roundabout.jpg" alt="" />' +
+        '<svg viewBox="0 0 960 624" preserveAspectRatio="none" aria-hidden="true">' + glows + cars + "</svg></div>";
+    }
+
+    document.getElementById("panel-all").innerHTML = stageMarkup("all");
+    document.getElementById("panel-blue").innerHTML = stageMarkup("blue");
+    document.getElementById("panel-green").innerHTML = stageMarkup("green");
+    document.getElementById("panel-orange").innerHTML = stageMarkup("orange");
+
+    var actors = [];
+    document.querySelectorAll(".panel").forEach(function (panel) {
+      panel.querySelectorAll(".car").forEach(function (car) {
+        var name = car.getAttribute("data-name");
+        var glow = panel.querySelector('.glow[data-name="' + name + '"]');
+        var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute("d", ROUTES[name].d);
+        actors.push({
+          car: car,
+          glow: glow,
+          path: path,
+          signal: Number(car.getAttribute("data-signal")),
+          len: path.getTotalLength()
+        });
+      });
+    });
+
+    function progress(t) {
+      if (t < 0.1) return 0;
+      if (t < 0.3) return ((t - 0.1) / 0.2) * 0.18;
+      if (t < 0.9) return 0.18 + ((t - 0.3) / 0.6) * 0.82;
+      return 1;
+    }
+
+    var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var started = performance.now();
+
+    function frame(now) {
+      var t = reduced ? 0 : ((now - started) % 10000) / 10000;
+      var p = progress(t);
+      actors.forEach(function (a) {
+        var d = Math.min(a.len - 0.5, Math.max(0, p * a.len));
+        var a0 = a.path.getPointAtLength(d);
+        var a1 = a.path.getPointAtLength(Math.min(a.len, d + 6));
+        var ang = Math.atan2(a1.y - a0.y, a1.x - a0.x) * 180 / Math.PI;
+        a.car.setAttribute("transform", "translate(" + a0.x + " " + a0.y + ") rotate(" + ang + ")");
+        var signalling = p >= a.signal && t < 0.92;
+        var blink = signalling && Math.floor(t * 12.5) % 2 === 0;
+        a.car.querySelector(".lamp").setAttribute("opacity", blink ? "1" : "0");
+        var fade = t < 0.1 ? 0.12 : t > 0.9 ? (1 - t) / 0.1 : 0.72;
+        a.glow.style.opacity = String(fade);
+        a.glow.style.strokeDasharray = a.len + " " + a.len;
+        a.glow.style.strokeDashoffset = String(a.len * (1 - p));
+      });
+      if (!reduced) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+
     document.querySelectorAll(".tabs button").forEach(function (btn) {
       btn.addEventListener("click", function () {
         document.querySelectorAll(".tabs button").forEach(function (b) {
           b.classList.toggle("on", b === btn);
         });
-        var stage = document.getElementById("stage");
-        stage.className = "stage";
-        if (btn.dataset.show === "blue") stage.classList.add("hide-green", "hide-orange");
-        if (btn.dataset.show === "green") stage.classList.add("hide-blue", "hide-orange");
-        if (btn.dataset.show === "orange") stage.classList.add("hide-blue", "hide-green");
+        document.querySelectorAll(".panel").forEach(function (panel) {
+          panel.classList.toggle("on", panel.id === "panel-" + btn.dataset.show);
+        });
       });
     });
   </script>
