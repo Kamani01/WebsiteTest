@@ -11,104 +11,79 @@
     .tabs { display:flex; gap:8px; flex-wrap:wrap; margin:18px 0 22px; }
     .tabs button { border:1px solid #e4e4e7; background:#fff; border-radius:999px; padding:10px 14px; font-weight:600; cursor:pointer; }
     .tabs button.on { background:#111; color:#fff; border-color:#111; }
-    .study-grid { display:grid; grid-template-columns:1.2fr .8fr; gap:22px; align-items:start; }
-    .stage { background:#e7efe0; border-radius:20px; overflow:hidden; border:1px solid #e4e4e7; }
+    .stage { background:#d7e6c8; border-radius:20px; overflow:hidden; border:1px solid #e4e4e7; }
     .stage svg { width:100%; height:auto; display:block; }
-    .learner { offset-rotate:auto; animation:drive 11s linear infinite; }
-    .right-ind { fill:#ffb000; opacity:0; animation:rightblink 11s linear infinite; }
-    .left-ind { fill:#ffb000; opacity:0; animation:leftblink 11s linear infinite; }
-    @keyframes drive { 0% { offset-distance:0%; } 12% { offset-distance:8%; } 18% { offset-distance:8%; } 100% { offset-distance:100%; } }
-    @keyframes rightblink { 0%,8% { opacity:0; } 10%,14% { opacity:1; } 16% { opacity:0; } 20%,24% { opacity:1; } 26% { opacity:0; } 30%,34% { opacity:1; } 36% { opacity:0; } 40%,44% { opacity:1; } 46% { opacity:0; } 48%,52% { opacity:1; } 54%,100% { opacity:0; } }
-    @keyframes leftblink { 0%,56% { opacity:0; } 60%,64% { opacity:1; } 66% { opacity:0; } 70%,74% { opacity:1; } 76% { opacity:0; } 80%,84% { opacity:1; } 86% { opacity:0; } 90%,94% { opacity:1; } 96% { opacity:0; } 100% { opacity:1; } }
-    .steps { display:grid; gap:10px; }
-    .steps button { text-align:left; border:1px solid #ececef; background:#fff; border-radius:14px; padding:14px; cursor:pointer; }
-    .steps button.on { border-color:#6142ff; }
-    .steps b { display:block; }
-    .steps span { color:#6e6e6e; }
-    .tab[data-step="1"] .learner, .tab[data-step="1"] .right-ind, .tab[data-step="1"] .left-ind { animation-delay:0s; }
-    .tab[data-step="2"] .learner, .tab[data-step="2"] .right-ind, .tab[data-step="2"] .left-ind { animation-delay:-1.6s; }
-    .tab[data-step="3"] .learner, .tab[data-step="3"] .right-ind, .tab[data-step="3"] .left-ind { animation-delay:-4.2s; }
-    .tab[data-step="4"] .learner, .tab[data-step="4"] .right-ind, .tab[data-step="4"] .left-ind { animation-delay:-6.4s; }
-    .tab[data-step="5"] .learner, .tab[data-step="5"] .right-ind, .tab[data-step="5"] .left-ind { animation-delay:-8.6s; }
-    @media (max-width:900px) { .study-grid { grid-template-columns:1fr; } .study-hero { padding-top:100px; } }
-    @media (prefers-reduced-motion:reduce) { .learner, .right-ind, .left-ind { animation:none; } }
+    .car { offset-rotate:auto; animation:go 10s linear infinite; }
+    .trail { stroke-dasharray:8 420; stroke-dashoffset:0; animation:trail 10s linear infinite; }
+    @keyframes go { 0%,10% { offset-distance:0%; } 30% { offset-distance:18%; } 60% { offset-distance:62%; } 90%,100% { offset-distance:100%; } }
+    @keyframes trail { 0%,10% { stroke-dashoffset:0; opacity:.35; } 90% { stroke-dashoffset:-420; opacity:.9; } 100% { opacity:.15; } }
+    .hide-blue .blue, .hide-green .green, .hide-orange .orange { display:none; }
+    .note { color:#555; margin-top:12px; }
+    @media (max-width:900px) { .study-hero { padding-top:100px; } }
+    @media (prefers-reduced-motion:reduce) { .car, .trail { animation:none; } }
   </style>
 </head>
 <body>
   <header class="site">
     <div class="wrap nav">
       <a class="brand" href="index.html"><span class="mark">JS</span><span>JS Driving School<small>FEATHERSTONE</small></span></a>
-      <nav class="nav-links" id="nav">
+      <nav class="nav-links">
         <a href="index.html#lessons">Lessons</a>
         <a href="index.html#prices">Prices</a>
         <a href="study.html">Study</a>
         <a href="index.html#book">Book</a>
       </nav>
-      <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+      <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('nav') && document.getElementById('nav').classList.toggle('open')">☰</button>
     </div>
   </header>
   <main class="wrap study-hero">
     <a href="index.html">Back to site</a>
     <p class="eyebrow">Study</p>
-    <h1>Junction school</h1>
-    <p class="sub">Right turn: right-hand approach lane, pause at the give-way line, inner lane clockwise, then spiral out after the straight-ahead exit. Right indicator first, left indicator once you pass that exit.</p>
-    <div class="tabs" id="tabs">
-      <button class="on" data-tab="right">Right turn</button>
-      <button data-tab="straight">Straight ahead</button>
-      <button data-tab="left">First exit</button>
-      <button data-tab="cross">Crossroads</button>
+    <h1>Three ways off the roundabout</h1>
+    <p class="sub">Locked top-down view. Blue takes the first exit, green goes straight, orange takes the right-hand exit. They start together on the south stop line.</p>
+    <div class="tabs">
+      <button class="on" data-show="all">All three</button>
+      <button data-show="blue">Blue only</button>
+      <button data-show="green">Green only</button>
+      <button data-show="orange">Orange only</button>
     </div>
-    <div id="panels"></div>
-    <p style="margin-top:22px"><a class="btn btn-violet" href="index.html#book">Book a lesson</a></p>
+    <div class="stage" id="stage">
+      <svg viewBox="0 0 960 640">
+        <rect width="960" height="640" fill="#cfe3b8"/>
+        <rect x="390" y="0" width="180" height="640" fill="#8e949a"/>
+        <rect x="0" y="230" width="960" height="180" fill="#8e949a"/>
+        <circle cx="480" cy="320" r="168" fill="#8e949a"/>
+        <circle cx="480" cy="320" r="78" fill="#6fbf4a" stroke="#f7f7f7" stroke-width="10"/>
+        <circle cx="460" cy="300" r="10" fill="#2f6b32"/><circle cx="500" cy="336" r="8" fill="#2f6b32"/><circle cx="474" cy="348" r="6" fill="#245c28"/>
+        <circle cx="480" cy="320" r="118" fill="none" stroke="#fff" stroke-dasharray="12 10"/>
+        <path d="M430 430 h100" stroke="#fff" stroke-width="4"/>
+        <path d="M150 300 h24 M786 300 h24 M455 150 v24 M455 466 v24" stroke="#fff" stroke-width="8"/>
+        <g font-size="16" font-family="Inter Tight, sans-serif" fill="#fff" text-anchor="middle">
+          <circle cx="250" cy="250" r="16" fill="#1d3f73"/><text y="255">1</text>
+          <circle cx="390" cy="150" r="16" fill="#1d3f73"/><text y="155">2</text>
+          <circle cx="590" cy="150" r="16" fill="#1d3f73"/><text y="155">3</text>
+          <circle cx="640" cy="470" r="16" fill="#1d3f73"/><text y="475">4</text>
+        </g>
+        <path class="trail blue" d="M430 560 V450 A140 140 0 0 1 340 320 H20" fill="none" stroke="#2f6fe0" stroke-width="6" stroke-linecap="round"/>
+        <path class="trail green" d="M480 560 V450 A140 140 0 0 1 480 180 V20" fill="none" stroke="#2f9d4a" stroke-width="6" stroke-linecap="round"/>
+        <path class="trail orange" d="M530 560 V450 A140 140 0 1 1 620 320 H940" fill="none" stroke="#e07a2f" stroke-width="6" stroke-linecap="round"/>
+        <g class="car blue" style="offset-path:path('M430 560 V450 A140 140 0 0 1 340 320 H20')"><rect x="-16" y="-8" width="32" height="16" rx="4" fill="#2f6fe0"/></g>
+        <g class="car green" style="offset-path:path('M480 560 V450 A140 140 0 0 1 480 180 V20')"><rect x="-16" y="-8" width="32" height="16" rx="4" fill="#2f9d4a"/></g>
+        <g class="car orange" style="offset-path:path('M530 560 V450 A140 140 0 1 1 620 320 H940')"><rect x="-16" y="-8" width="32" height="16" rx="4" fill="#e07a2f"/></g>
+      </svg>
+    </div>
+    <p class="note">Ten-second loop. They wait on the line, move off together, then each holds its own lane. The line brightens under the car and fades behind it.</p>
+    <p style="margin-top:18px"><a class="btn btn-violet" href="index.html#book">Book a lesson</a></p>
   </main>
   <script>
-    const base = `
-      <rect width="640" height="640" fill="#d7e6c8"/>
-      <rect x="230" y="430" width="180" height="210" fill="#9aa0a6"/>
-      <rect x="255" y="0" width="130" height="210" fill="#9aa0a6"/>
-      <rect x="0" y="255" width="210" height="130" fill="#9aa0a6"/>
-      <rect x="430" y="255" width="210" height="130" fill="#9aa0a6"/>
-      <circle cx="320" cy="320" r="188" fill="#9aa0a6"/>
-      <circle cx="320" cy="320" r="72" fill="#6fbf4a" stroke="#f4f4f4" stroke-width="10"/>
-      <circle cx="320" cy="320" r="112" fill="none" stroke="#fff" stroke-dasharray="12 10" stroke-width="3"/>
-      <path d="M300 452 h40" stroke="#fff" stroke-width="5"/>
-      <path d="M250 452 h18 M372 452 h18" stroke="#fff" stroke-width="4"/>
-    `;
-    const scenes = {
-      right: {
-        title: "Right turn",
-        path: "M372 620 V452 A132 132 0 1 1 452 372 H630",
-        steps: [
-          ["Approach", "Bottom road, right-hand entry lane. Right indicator on."],
-          ["Give way", "Stop on the give-way line. Yield, then enter clockwise."],
-          ["Inner lane", "Stay centred in the lane closest to the island. Pass the left exit and the straight-ahead exit."],
-          ["Spiral", "Just after the second exit, the right indicator goes off and the left comes on. Drift out across the dashed line."],
-          ["Third exit", "Leave in one clean arc on the single-lane exit and drive off the frame."]
-        ]
-      },
-      straight: {
-        title: "Straight ahead",
-        path: "M292 620 V470 A150 150 0 0 1 292 170 V20",
-        steps: [["Approach","Left lane. No signal yet."],["Give way","Look right."],["Pass first exit","Stay on the circle."],["Indicate left","Left indicator after the first exit."],["Leave","Out at the top."]]
-      },
-      left: {
-        title: "First exit",
-        path: "M292 620 V470 A150 150 0 0 1 170 292 H20",
-        steps: [["Approach","Left lane, signal left."],["Give way","Traffic from the right first."],["Enter","Hold the outer lane."],["Signal","Keep the left indicator on."],["Exit","Leave at the first exit."]]
-      },
-      cross: {
-        title: "Controlled crossroads",
-        path: "M292 620 V390 H470 V250 H292 V20",
-        steps: [["Approach","Mirrors, signal, position."],["Observe","Lights and oncoming cars."],["Stop","Red means stop behind the line."],["Go","Only when it is clear."],["Leave","Cancel the signal."]]
-      }
-    };
-    function panel(key, scene) {
-      const map = key === "cross" ? `<rect width="640" height="640" fill="#d7e6c8"/><rect x="250" y="0" width="140" height="640" fill="#9aa0a6"/><rect x="0" y="250" width="640" height="140" fill="#9aa0a6"/><circle cx="236" cy="236" r="9" fill="#e23b3b"/>` : base;
-      return `<section class="tab study-grid" id="${key}" data-step="1" ${key==="right"?"":"hidden"}><div class="stage"><svg viewBox="0 0 640 640">${map}<path d="${scene.path}" fill="none" stroke="#3dd68c" stroke-width="5" stroke-linecap="round" opacity=".8"/><g class="learner" style="offset-path:path('${scene.path}')"><rect x="-18" y="-9" width="36" height="18" rx="4" fill="#d23b3b"/><rect x="8" y="-6" width="7" height="12" fill="#ffd7d7"/><circle class="right-ind" cx="12" cy="-7" r="2.4"/><circle class="left-ind" cx="-12" cy="-7" r="2.4"/></g></svg></div><div><h2>${scene.title}</h2><div class="steps">${scene.steps.map((s,i)=>`<button class="${i===0?"on":""}" onclick="jump('${key}',${i+1},this)"><b>${i+1} ${s[0]}</b><span>${s[1]}</span></button>`).join("")}</div></div></section>`;
-    }
-    document.getElementById("panels").innerHTML = Object.entries(scenes).map(([k,v]) => panel(k,v)).join("");
-    document.getElementById("tabs").addEventListener("click", (e) => { const btn = e.target.closest("button"); if (!btn) return; document.querySelectorAll("#tabs button").forEach(b => b.classList.toggle("on", b === btn)); document.querySelectorAll(".tab").forEach(p => p.hidden = p.id !== btn.dataset.tab); });
-    function jump(id, n, btn) { document.getElementById(id).dataset.step = n; btn.parentElement.querySelectorAll("button").forEach(b => b.classList.remove("on")); btn.classList.add("on"); }
+    document.querySelectorAll(".tabs button").forEach(btn => btn.addEventListener("click", () => {
+      document.querySelectorAll(".tabs button").forEach(b => b.classList.toggle("on", b === btn));
+      const stage = document.getElementById("stage");
+      stage.className = "stage";
+      if (btn.dataset.show === "blue") stage.classList.add("hide-green", "hide-orange");
+      if (btn.dataset.show === "green") stage.classList.add("hide-blue", "hide-orange");
+      if (btn.dataset.show === "orange") stage.classList.add("hide-blue", "hide-green");
+    }));
   </script>
 </body>
 </html>
