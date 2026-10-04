@@ -13,14 +13,15 @@
     <div class="wrap nav">
       <a class="brand" href="index.html"><span class="mark">JS</span><span>JS Driving School<small>FEATHERSTONE</small></span></a>
       <nav class="nav-links" id="nav">
-        <a href="#lessons">Lessons</a>
-        <a href="#prices">Prices</a>
-        <a href="#areas">Areas</a>
-        <a href="#faqs">FAQs</a>
+        <a href="#lessons" onclick="document.getElementById('nav').classList.remove('open')">Lessons</a>
+        <a href="#prices" onclick="document.getElementById('nav').classList.remove('open')">Prices</a>
+        <a href="#areas" onclick="document.getElementById('nav').classList.remove('open')">Areas</a>
+        <a href="#faqs" onclick="document.getElementById('nav').classList.remove('open')">FAQs</a>
         <a href="blog.html">Blog</a>
-        <a href="#book">Book</a>
+        <a href="#book" onclick="document.getElementById('nav').classList.remove('open')">Book</a>
+        <a href="tel:+447447432160">Call</a>
       </nav>
-      <a class="btn btn-violet" href="tel:+447447432160">Call 07447 432160</a>
+      <a class="btn btn-violet header-call" href="tel:+447447432160">Call</a>
       <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
     </div>
   </header>
@@ -31,7 +32,7 @@
       <p class="lead">One independent instructor. Dual-control car. Manual or automatic. Pickup from home, then the roads you'll actually meet around Cat &amp; Kittens Lane.</p>
       <div class="hero-actions">
         <a class="btn btn-violet" href="#book">Check availability</a>
-        <a class="btn btn-ghost" href="tel:+447447432160">Call 07447 432160</a>
+        <a class="btn btn-ghost" href="tel:+447447432160">Call</a>
       </div>
       <div class="stats">
         <div class="stat"><b>5.0</b><span>Google rating</span></div>
@@ -114,7 +115,7 @@
       <div>
         <span class="eyebrow">Book</span>
         <h2>Check availability</h2>
-        <p class="sub">Sending a request does not confirm a lesson. We'll reply with a slot, usually the same day. Prefer to talk? Call 07447 432160.</p>
+        <p class="sub">Sending a request does not confirm a lesson. We'll reply with a slot, usually the same day. Prefer to talk? Use Call.</p>
         <form class="book" onsubmit="return sendHome(event)">
           <div class="form-grid"><div><label>NAME</label><input name="name" required /></div><div><label>PHONE</label><input name="phone" required /></div></div>
           <div class="form-grid"><div><label>EMAIL (OPTIONAL)</label><input name="email" type="email" /></div><div><label>PICKUP POSTCODE</label><input name="postcode" required /></div></div>
@@ -124,7 +125,7 @@
           <button class="btn btn-violet" type="submit">Check availability</button>
         </form>
       </div>
-      <aside class="card"><h3>Ready for your first lesson?</h3><p>Send your postcode and we will reply with a slot, usually the same day.</p></aside>
+      <aside class="card"><h3>Ready for your first lesson?</h3><p>Send your postcode and we will reply with a slot, usually the same day.</p><p style="margin-top:14px"><a class="btn btn-violet" href="tel:+447447432160">Contact</a></p></aside>
     </div>
   </section>
   <script>
@@ -134,7 +135,7 @@
     <div class="wrap foot">
       <div><a class="brand" href="index.html"><span class="mark">JS</span><span>JS Driving School</span></a><p>One independent instructor, one dual-control car, and a clear plan for every hour.</p><p>Test centre practice: Cat &amp; Kittens Lane, Featherstone, WV10 7JD</p></div>
       <div><h4>Pages</h4><a href="index.html">Home</a><a href="#lessons">Lessons</a><a href="#prices">Prices</a><a href="#areas">Areas</a><a href="#faqs">FAQs</a><a href="blog.html">Blog</a><a href="#book">Book a lesson</a></div>
-      <div><h4>Get in touch</h4><a href="tel:+447447432160">07447 432160</a><a href="https://www.google.com/maps?cid=3301546470054976225">Rated 5.0 on Google</a><p>Replies usually the same day.</p></div>
+      <div><h4>Get in touch</h4><a href="tel:+447447432160">Call</a><a href="#book">Contact</a><a href="https://www.google.com/maps?cid=3301546470054976225">Rated 5.0 on Google</a><p>Replies usually the same day.</p></div>
       <div><h4>Legal</h4><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a></div>
     </div>
     <div class="wrap legal"><span>© 2026 JS Driving School. Featherstone.</span></div>
